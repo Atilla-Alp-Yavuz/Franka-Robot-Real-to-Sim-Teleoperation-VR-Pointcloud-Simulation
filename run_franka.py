@@ -5,7 +5,7 @@ import time
 import math
 
 # Path to the Franka XML inside the project
-xml_path = Path("franka_emika_panda") / "mjx_panda.xml"
+xml_path = Path("panda_scene.xml") 
 
 # Load model & data
 model = mujoco.MjModel.from_xml_path(str(xml_path))
