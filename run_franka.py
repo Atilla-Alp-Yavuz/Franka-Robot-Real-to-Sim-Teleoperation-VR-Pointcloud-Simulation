@@ -12,7 +12,7 @@ model = mujoco.MjModel.from_xml_path(str(xml_path))
 data = mujoco.MjData(model)       # <-- THIS WAS MISSING
 
 # Put the arm in a nicer initial pose (optional)
-initial_qpos = [0.0, -0.5, 0.0, -1.2, 0.0, 1.6, 0.0]
+initial_qpos = [0.0, -0.1, 0.0, -1.2, 0.0, 1.6, 0.0]
 data.qpos[:len(initial_qpos)] = initial_qpos
 mujoco.mj_forward(model, data)
 
@@ -29,3 +29,4 @@ with viewer.launch_passive(model, data) as v:
         mujoco.mj_forward(model, data)
         mujoco.mj_step(model, data)
         v.sync()
+
