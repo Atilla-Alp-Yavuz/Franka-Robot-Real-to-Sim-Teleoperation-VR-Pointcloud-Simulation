@@ -1,0 +1,27 @@
+<mujoco model="base_lab">
+
+  <option gravity="0 0 -9.81" timestep="0.002"/>
+
+  <default>
+    <geom rgba="0.8 0.8 0.8 1" friction="1 0.1 0.1" condim="3"/>
+    <joint armature="0.01" damping="1"/>
+  </default>
+
+  <worldbody>
+    <!-- Ground -->
+    <geom name="ground" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1"/>
+
+    <!-- Table -->
+    <body name="table" pos="0.6 0 0.4">
+      <geom type="box" size="0.35 0.35 0.02" rgba="0.6 0.4 0.3 1"/>
+    </body>
+
+    <!-- Robot base (adjust pos/quat to your existing panda_scene) -->
+    <body name="panda_base" pos="0 0 0.4">
+      <include file="franka_emika_panda/panda.xml"/>
+    </body>
+
+    <!-- A camera that looks at the workspace -->
+    <camera name="overhead" pos="0.6 0 1.2" euler="-90 0 0"/>
+  </worldbody>
+</mujoco>
