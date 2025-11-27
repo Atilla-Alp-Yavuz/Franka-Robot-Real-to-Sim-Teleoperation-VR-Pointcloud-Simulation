@@ -1,0 +1,175 @@
+Franka-Robot-Real-to-Sim/
+│
+├── lab0.xml
+├── lab1_T_stack.xml
+├── lab2_boxes_cups.xml
+├── lab3_stick_maze.xml
+│
+├── labs.py
+├── sim_control.py
+├── teleop_interface.py
+├── franka_real.py
+├── lab_teleop.py
+│
+├── lab_offscreen_test.py
+├── teleop_client_example.py
+│
+└── (camera / streaming scripts to be used on Windows/Linux)
+
+============================================================
+README — Franka Real-to-Sim Teleoperation + Multi-Lab MuJoCo
+============================================================
+
+This repository provides a unified framework for:
+
+- Real-time teleoperation of a Franka Emika Panda robot
+- Simultaneous mirroring of the robot inside MuJoCo
+- Multiple structured lab environments (stacking, cups, maze)
+- Optional RGB/Depth/Point-Cloud vision extraction
+- Expandable hooks for VR / Novametics / Unity streaming
+
+The system is modular, scene-agnostic, and designed for both
+real robot control and data generation across different tasks.
+
+------------------------------------------------------------
+1. LAB ENVIRONMENTS (MJCF XML)
+------------------------------------------------------------
+
+There are four MuJoCo scenes:
+
+lab0.xml
+    Base scene: ground, table, Panda arm. No objects.
+
+lab1_T_stack.xml
+    Two T-shaped objects to be stacked.
+
+lab2_boxes_cups.xml
+    A cereal box, a square box, and three hollow cups 
+    (visual inner+outer, solid collision core).
+
+lab3_stick_maze.xml
+    A stick that must be navigated through a maze structure.
+
+All labs share:
+    - The same Panda robot + actuators
+    - Same 5-camera setup:
+        overhead, top, front, right, left
+    - Cameras use radians (compiler angle="radian")
+
+------------------------------------------------------------
+2. TELEOPERATION SYSTEM
+------------------------------------------------------------
+
+The project defines a complete teleop pipeline with no TODOs.
+
+Files:
+
+labs.py
+    Loads any lab model by ID (0–3).
+
+teleop_interface.py
+    Teleoperation input via TCP socket (127.0.0.1:5000).
+    Expects lines: q1 q2 q3 q4 q5 q6 q7 gripper
+
+    Any teleop device (VR, Novametics, Unity) can control
+    the robot by sending those 8 floats.
+
+sim_control.py
+    Sends joint/gripper commands to MuJoCo:
+      data.ctrl[:7] = q_cmd
+      data.ctrl[7]  = gripper*0.04
+
+franka_real.py
+    Stub real-robot interface that logs commands.
+    Replace internal methods with real Franka API later.
+
+lab_teleop.py
+    Main loop:
+        - Load selected lab
+        - Start teleop listener
+        - Start MuJoCo viewer
+        - At 250Hz:
+            read teleop → apply to sim → apply to real (stub)
+            → step simulation → viewer.sync()
+
+Run teleop:
+
+    mjpython lab_teleop.py 2       # use lab2
+
+Example test teleop client:
+
+    mjpython teleop_client_example.py
+
+------------------------------------------------------------
+3. CAMERA / DEPTH / POINT CLOUD PIPELINE
+------------------------------------------------------------
+
+Scripts provided:
+    optimized_cloud_generate.py
+    fixed_cloud_generate.py
+    render_camera.py
+    mujoco_streamer.py
+    npy_pointcloud_viewer.py
+
+Features:
+    - RGB rendering
+    - Depth map generation (GL→metric)
+    - Point cloud generation
+    - Camera-to-world transforms
+    - WebSocket streaming
+
+IMPORTANT:
+    On the current macOS lab machine:
+    • Offscreen renderer (mujoco.Renderer) returns black frames.
+    • Viewer works fine.
+    • On Windows/Linux/Pip-macOS, offscreen works normally.
+
+Recommendation:
+    - Use macOS + mjpython for TELEOP ONLY.
+    - Use Windows/Linux for camera/pointcloud scripts.
+
+------------------------------------------------------------
+4. CURRENT STATUS
+------------------------------------------------------------
+
+✔ Teleop system fully implemented  
+✔ Real & sim mirroring pipeline in place  
+✔ Multi-lab switching working  
+✔ Hollow cups, T-stack, stick maze models functional  
+✔ Vision pipeline complete (works on non-mjpython platforms)  
+
+⚠ macOS + mjpython cannot do offscreen rendering  
+   (use Windows/Linux for RGB/depth/PC extraction).
+
+------------------------------------------------------------
+5. WHAT REMAINS TO BE DONE
+------------------------------------------------------------
+
+1. Integrate actual Franka robot API into franka_real.py  
+2. Replace TCP teleop with direct VR/Novametics input if desired  
+3. Run vision scripts on Windows/Linux for dataset generation  
+4. Connect camera streaming to teleop loop (every N steps)  
+5. (Future) IRIS integration for interactive AI tutor pipeline  
+
+------------------------------------------------------------
+6. USAGE SUMMARY
+------------------------------------------------------------
+
+Start teleop (any lab):
+    mjpython lab_teleop.py 0
+    mjpython lab_teleop.py 1
+    mjpython lab_teleop.py 2
+    mjpython lab_teleop.py 3
+
+Test teleop input:
+    mjpython teleop_client_example.py
+
+Generate RGB/Depth/Point Cloud (Windows/Linux):
+    python optimized_cloud_generate.py
+
+Stream to external app (Windows/Linux):
+    python mujoco_streamer.py
+
+------------------------------------------------------------
+END OF README
+------------------------------------------------------------
