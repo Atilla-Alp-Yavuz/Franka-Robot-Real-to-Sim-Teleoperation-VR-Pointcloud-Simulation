@@ -109,33 +109,55 @@
   </asset>
 
   <worldbody>
-      <!-- === LAB 1 OBJECTS: Two T structures === -->
-    <body name="T1" pos="0.6 -0.1 0.44">
-      <joint name="T1_free" type="free"/>
-      <!-- Vertical stem -->
-      <geom name="T1_stem" type="box"
-            size="0.015 0.015 0.06"
-            pos="0 0 0.06"
-            rgba="0.2 0.6 0.9 1"/>
-      <!-- Horizontal bar -->
-      <geom name="T1_bar" type="box"
-            size="0.045 0.015 0.015"
-            pos="0 0 0.12"
-            rgba="0.2 0.6 0.9 1"/>
+      <!-- === LAB 3 OBJECTS: Stick Maze === -->
+
+    <!-- Maze built from fixed walls on the table -->
+    <body name="maze" pos="0.6 0 0.44">
+      <!-- Three parallel walls -->
+      <geom name="maze_wall1" type="box"
+            size="0.12 0.01 0.03"
+            pos="0.0 -0.10 0.03"
+            rgba="0.4 0.4 0.4 1"/>
+
+      <geom name="maze_wall2" type="box"
+            size="0.12 0.01 0.03"
+            pos="0.0 0.00 0.03"
+            rgba="0.4 0.4 0.4 1"/>
+
+      <geom name="maze_wall3" type="box"
+            size="0.12 0.01 0.03"
+            pos="0.0 0.10 0.03"
+            rgba="0.4 0.4 0.4 1"/>
+
+      <!-- Two connectors to form a path -->
+      <geom name="maze_bar1" type="box"
+            size="0.01 0.05 0.03"
+            pos="-0.08 -0.05 0.03"
+            rgba="0.4 0.4 0.4 1"/>
+
+      <geom name="maze_bar2" type="box"
+            size="0.01 0.05 0.03"
+            pos="0.08 0.05 0.03"
+            rgba="0.4 0.4 0.4 1"/>
     </body>
 
-    <body name="T2" pos="0.6 0.1 0.44">
-      <joint name="T2_free" type="free"/>
-      <!-- Vertical stem -->
-      <geom name="T2_stem" type="box"
-            size="0.015 0.015 0.06"
-            pos="0 0 0.06"
-            rgba="0.9 0.5 0.2 1"/>
-      <!-- Horizontal bar -->
-      <geom name="T2_bar" type="box"
-            size="0.045 0.015 0.015"
-            pos="0 0 0.12"
-            rgba="0.9 0.5 0.2 1"/>
+    <!-- Stick with a front "ring" -->
+    <body name="stick" pos="0.5 -0.2 0.46">
+      <joint name="stick_free" type="free"/>
+
+      <!-- Long rod (lying roughly in +x direction) -->
+      <geom name="stick_rod" type="cylinder"
+            size="0.01 0.25" 
+            pos="0 0 0"
+            euler="0 90 0"
+            rgba="0.8 0.8 0.2 1"/>
+
+      <!-- Slightly thicker tip as proxy for a ring -->
+      <geom name="stick_tip" type="cylinder"
+            size="0.02 0.01"
+            pos="0.25 0 0"
+            euler="0 90 0"
+            rgba="0.9 0.9 0.1 1"/>
     </body>
       <!-- Ground -->
     <geom name="ground" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1"/>
@@ -147,10 +169,31 @@
 
 
     <!-- A camera that looks at the workspace -->
-    <camera name="overhead" pos="0.6 0 1.2" euler="-90 0 0"/>
-    <camera name="top" pos="0 0 1.5" quat="0 1 0 0"/>
-    <camera name="right" pos="1.5 0 0" quat="0 1 0 0"/>
-    <camera name="left" pos="0 1.5 0" quat="0 1 0 0"/>
+    <!-- Cameras (angles in RADIANS because compiler angle="radian") -->
+    <!-- Overhead: looking straight down -->
+    <camera name="overhead"
+            pos="0.6 0 1.2"
+            euler="-1.5708 0 0"/>   <!-- -π/2 -->
+
+    <!-- Top: also looking down at center -->
+    <camera name="top"
+            pos="0 0 1.5"
+            euler="-1.5708 0 0"/>   <!-- -π/2 -->
+
+    <!-- Front: in +x, looking towards origin -->
+    <camera name="front"
+            pos="1.2 0 0.6"
+            euler="0 1.5708 0"/>     <!-- yaw +π/2 -->
+
+    <!-- Right: in +y, looking towards origin -->
+    <camera name="right"
+            pos="0 1.2 0.6"
+            euler="0 0 1.5708"/>     <!-- roll +π/2 -->
+
+    <!-- Left: in -y, looking towards origin -->
+    <camera name="left"
+            pos="0 -1.2 0.6"
+            euler="0 0 -1.5708"/>    <!-- roll -π/2 -->
     <light name="top" pos="0 0 2" dir="0 0 -1" mode="trackcom"/>
     <body name="link0" childclass="panda">
       <inertial pos="-0.041018 -0.00014 0.049974" quat="0.00630474 0.751245 0.00741774 0.659952" mass="0.629769" diaginertia="0.00430465 0.00387984 0.00313051"/>

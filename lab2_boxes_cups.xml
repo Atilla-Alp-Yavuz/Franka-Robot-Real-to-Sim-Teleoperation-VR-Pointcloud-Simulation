@@ -1,4 +1,4 @@
-<mujoco model="panda">
+quat="0 1 0 0"/><mujoco model="panda">
   <compiler angle="radian" meshdir="franka_emika_panda/assets"/>
 
   <default>
@@ -109,55 +109,83 @@
   </asset>
 
   <worldbody>
-      <!-- === LAB 3 OBJECTS: Stick Maze === -->
+      <!-- === LAB 2 OBJECTS: Boxes + Cups === -->
 
-    <!-- Maze built from fixed walls on the table -->
-    <body name="maze" pos="0.6 0 0.44">
-      <!-- Three parallel walls -->
-      <geom name="maze_wall1" type="box"
-            size="0.12 0.01 0.03"
-            pos="0.0 -0.10 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <geom name="maze_wall2" type="box"
-            size="0.12 0.01 0.03"
-            pos="0.0 0.00 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <geom name="maze_wall3" type="box"
-            size="0.12 0.01 0.03"
-            pos="0.0 0.10 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <!-- Two connectors to form a path -->
-      <geom name="maze_bar1" type="box"
-            size="0.01 0.05 0.03"
-            pos="-0.08 -0.05 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <geom name="maze_bar2" type="box"
-            size="0.01 0.05 0.03"
-            pos="0.08 0.05 0.03"
-            rgba="0.4 0.4 0.4 1"/>
+    <!-- Cereal box: tall rectangular prism -->
+    <body name="cereal_box" pos="0.55 -0.15 0.45">
+      <joint name="cereal_free" type="free"/>
+      <geom name="cereal_geom" type="box"
+            size="0.03 0.06 0.12"
+            rgba="0.9 0.9 0.2 1"/>
     </body>
 
-    <!-- Stick with a front "ring" -->
-    <body name="stick" pos="0.5 -0.2 0.46">
-      <joint name="stick_free" type="free"/>
+    <!-- Square box -->
+<body name="square_box" pos="0.65 -0.05 0.45">
+  <joint name="square_free" type="free"/>
+  <geom name="square_geom" type="box"
+        size="0.08 0.04 0.05"  
+        rgba="0.8 0.2 0.2 1"/> <!-- slightly more red if you like -->
+</body>
 
-      <!-- Long rod (lying roughly in +x direction) -->
-      <geom name="stick_rod" type="cylinder"
-            size="0.01 0.25" 
-            pos="0 0 0"
-            euler="0 90 0"
-            rgba="0.8 0.8 0.2 1"/>
+    <!-- Cups as solid cylinders -->
+    <body name="cup1" pos="0.55 0.05 0.45">
+    <joint name="cup1_free" type="free"/>
 
-      <!-- Slightly thicker tip as proxy for a ring -->
-      <geom name="stick_tip" type="cylinder"
-            size="0.02 0.01"
-            pos="0.25 0 0"
-            euler="0 90 0"
-            rgba="0.9 0.9 0.1 1"/>
+    <!-- Collision shape (solid cylinder, invisible) -->
+    <geom name="cup1_collision" type="cylinder"
+            size="0.02 0.06"
+            rgba="0 0 0 0"       
+            group="3"/>          <!-- collision group -->
+
+    <!-- Outer visual wall -->
+    <geom name="cup1_outer" type="cylinder"
+            size="0.02 0.06"
+            rgba="0.7 0.7 0.8 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+
+    <!-- Inner visual surface (slightly smaller, lighter) -->
+    <geom name="cup1_inner" type="cylinder"
+            size="0.017 0.055"
+            rgba="0.95 0.95 0.95 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+    </body>
+
+    <body name="cup2" pos="0.60 0.05 0.45">
+    <joint name="cup2_free" type="free"/>
+    <geom name="cup2_collision" type="cylinder"
+            size="0.02 0.06"
+            rgba="0 0 0 0"
+            group="3"/>
+    <geom name="cup2_outer" type="cylinder"
+            size="0.02 0.06"
+            rgba="0.7 0.7 0.8 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+    <geom name="cup2_inner" type="cylinder"
+            size="0.017 0.055"
+            rgba="0.95 0.95 0.95 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+    </body>
+
+    <body name="cup3" pos="0.65 0.05 0.45">
+    <joint name="cup3_free" type="free"/>
+    <geom name="cup3_collision" type="cylinder"
+            size="0.02 0.06"
+            rgba="0 0 0 0"
+            group="3"/>
+    <geom name="cup3_outer" type="cylinder"
+            size="0.02 0.06"
+            rgba="0.7 0.7 0.8 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+    <geom name="cup3_inner" type="cylinder"
+            size="0.017 0.055"
+            rgba="0.95 0.95 0.95 1"
+            contype="0" conaffinity="0"
+            group="2"/>
     </body>
       <!-- Ground -->
     <geom name="ground" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1"/>
@@ -169,10 +197,31 @@
 
 
     <!-- A camera that looks at the workspace -->
-    <camera name="overhead" pos="0.6 0 1.2" euler="-90 0 0"/>
-    <camera name="top" pos="0 0 1.5" quat="0 1 0 0"/>
-    <camera name="right" pos="1.5 0 0" quat="0 1 0 0"/>
-    <camera name="left" pos="0 1.5 0" quat="0 1 0 0"/>
+    <!-- Cameras (angles in RADIANS because compiler angle="radian") -->
+    <!-- Overhead: looking straight down -->
+    <camera name="overhead"
+            pos="0.6 0 1.2"
+            euler="-1.5708 0 0"/>   <!-- -π/2 -->
+
+    <!-- Top: also looking down at center -->
+    <camera name="top"
+            pos="0 0 1.5"
+            euler="-1.5708 0 0"/>   <!-- -π/2 -->
+
+    <!-- Front: in +x, looking towards origin -->
+    <camera name="front"
+            pos="1.2 0 0.6"
+            euler="0 1.5708 0"/>     <!-- yaw +π/2 -->
+
+    <!-- Right: in +y, looking towards origin -->
+    <camera name="right"
+            pos="0 1.2 0.6"
+            euler="0 0 1.5708"/>     <!-- roll +π/2 -->
+
+    <!-- Left: in -y, looking towards origin -->
+    <camera name="left"
+            pos="0 -1.2 0.6"
+            euler="0 0 -1.5708"/>    <!-- roll -π/2 -->
     <light name="top" pos="0 0 2" dir="0 0 -1" mode="trackcom"/>
     <body name="link0" childclass="panda">
       <inertial pos="-0.041018 -0.00014 0.049974" quat="0.00630474 0.751245 0.00741774 0.659952" mass="0.629769" diaginertia="0.00430465 0.00387984 0.00313051"/>
