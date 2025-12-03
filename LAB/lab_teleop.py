@@ -6,10 +6,10 @@ import mujoco
 from mujoco import viewer
 import numpy as np
 
-from labs import load_lab
-from teleop_interface import TeleopSource
+from LAB.labs import load_lab
+from PreWork.teleop_interface import TeleopSource
 from franka_real import FrankaReal
-from sim_control import apply_joint_command_to_sim, apply_gripper_to_sim
+from LAB.sim_control import apply_joint_command_to_sim, apply_gripper_to_sim
 
 CONTROL_HZ = 250.0      # control frequency
 SYNC_REAL = True        # set False to disable real-robot logging
