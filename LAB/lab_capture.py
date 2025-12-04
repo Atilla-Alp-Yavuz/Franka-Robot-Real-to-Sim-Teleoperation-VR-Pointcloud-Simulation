@@ -5,7 +5,7 @@ import mujoco
 import numpy as np
 import cv2
 
-from vision_utils import get_intrinsics, depth_to_pointcloud, cam_to_world
+from PreWork.vision_utils import get_intrinsics, depth_to_pointcloud, cam_to_world
 
 W, H = 640, 480
 CAMERAS = ["top", "front", "left", "right"]
