@@ -46,3 +46,4 @@ if __name__ == "__main__":
         out_name = f"lab{lab_id}_{CAMERA}_test.png"
         cv2.imwrite(out_name, cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR))
         print(f"[SAVE] {out_name}")
+

@@ -46,47 +46,55 @@ class FoveatedBridge:
 
     def process_camera(self, cam_name):
         # 1. Render Depth in MuJoCo
+        #    Enable depth mode, update scene, render, then disable depth mode again.
+        self.renderer.enable_depth_rendering()
         self.renderer.update_scene(self.data, camera=cam_name)
-        depth = self.renderer.render_depth()
-        
+        depth = self.renderer.render()  # (HEIGHT, WIDTH) float32, depth in meters
+        self.renderer.disable_depth_rendering()
+
         # 2. Fast Unprojection (using Open3D for C++ speed)
-        # Note: You need to pre-calculate intrinsics based on MuJoCo fovy
+        # Note: depth is a numpy array in meters.
         fovy = self.model.cam(cam_name).fovy[0]
         f = 0.5 * HEIGHT / np.tan(np.deg2rad(fovy) / 2)
-        intrinsic = o3d.camera.PinholeCameraIntrinsic(WIDTH, HEIGHT, f, f, WIDTH/2, HEIGHT/2)
-        
-        pcd = o3d.geometry.PointCloud.create_from_depth_image(
-            o3d.geometry.Image(depth), intrinsic, depth_scale=1.0, depth_trunc=10.0, stride=4
+        intrinsic = o3d.camera.PinholeCameraIntrinsic(
+            WIDTH, HEIGHT, f, f, WIDTH / 2, HEIGHT / 2
         )
-        
-        # 3. Apply Foveation (The "Step 3" Logic)
-        points = np.asarray(pcd.points)
-        if points.shape[0] == 0: return
 
-        # Transform points to world frame (using camera pose from MuJoCo)
-        # ... (Matrix multiplication with data.cam_xmat/xpos) ...
-        # For brevity, let's assume points are now in World Space
-        
-        # Calculate angle between (Point - Eye) and (GazeVector)
+        # Open3D expects an Image with shape (H, W)
+        depth_o3d = o3d.geometry.Image(depth.astype(np.float32))
+
+        pcd = o3d.geometry.PointCloud.create_from_depth_image(
+            depth_o3d,
+            intrinsic,
+            depth_scale=1.0,
+            depth_trunc=10.0,
+            stride=4,
+        )
+
+        points = np.asarray(pcd.points)
+        if points.shape[0] == 0:
+            return
+
+        # TODO: transform to world frame if needed using camera pose
+        # (for now, assume points are in camera frame)
+
+        # 3. Apply Foveation
         to_point = points - self.user_pos
         to_point_norm = to_point / np.linalg.norm(to_point, axis=1, keepdims=True)
         dots = np.sum(to_point_norm * self.user_dir, axis=1)
-        
-        # Filter: High detail if dot product is close to 1 (looking at it)
+
         threshold = np.cos(np.deg2rad(FOVEA_ANGLE_DEG))
         mask_fovea = dots > threshold
-        
-        # High Res Fovea + Low Res Peripheral
+
         pts_fovea = points[mask_fovea]
-        pts_periph = points[~mask_fovea][::PERIPHERAL_DOWNSAMPLE] # 10x decimation
-        
+        pts_periph = points[~mask_fovea][::PERIPHERAL_DOWNSAMPLE]
+
         final_cloud = np.vstack((pts_fovea, pts_periph))
-        
-        # 4. Send to IRIS-Viz
-        # Format: [Header: Int Count][Body: Floats]
+
+        # 4. Send to Unity
         header = np.array([final_cloud.shape[0]], dtype=np.int32).tobytes()
         body = final_cloud.astype(np.float32).tobytes()
-        self.pc_pub.send_multipart([b"pointcloud", header, body])
+        self.pc_pub.send_multipart([b"pointcloud", header, body])  
 
 # Usage in your Main Loop
 # bridge = FoveatedBridge(model, data)
