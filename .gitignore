@@ -40,7 +40,6 @@ ExportedObj/
 *.exe
 *.dll
 /Praktikum_Unity/.plastic
-/Praktikum_Unity/Assets
 /Praktikum_Unity/Library
 /Praktikum_Unity/Logs
 /Praktikum_Unity/Packages
