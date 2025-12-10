@@ -4,8 +4,13 @@ from pathlib import Path
 import mujoco
 import numpy as np
 import cv2
+import sys
+from pathlib import Path
 
 from PreWork.vision_utils import get_intrinsics, depth_to_pointcloud, cam_to_world
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT_ROOT))
 
 W, H = 640, 480
 CAMERAS = ["top", "front", "left", "right"]
