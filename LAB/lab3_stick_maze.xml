@@ -39,6 +39,18 @@
     <material name="black" class="panda" rgba="0.25 0.25 0.25 1"/>
     <material name="green" class="panda" rgba="0 1 0 1"/>
     <material name="light_blue" class="panda" rgba="0.039216 0.541176 0.780392 1"/>
+        <!-- Maze mesh -->
+    <mesh name="maze_mesh"
+          content_type="model/obj"
+          file="Basic_Model_EUD-Body.obj"
+          scale="0.001 0.001 0.001"/>
+
+    <!-- Stick holder / stick mesh -->
+    <mesh name="stick_mesh"
+          content_type="model/obj"
+          file="Basic_Holder_Model_EUD-Body001.obj"
+          scale="0.001 0.001 0.001"/>
+      <!-- ==== Custom maze & stick meshes ==== -->
     <mesh name="link0_c" content_type="model/stl" file="link0.stl"/>
     <mesh name="link1_c" content_type="model/stl" file="link1.stl"/>
     <mesh name="link2_c" content_type="model/stl" file="link2.stl"/>
@@ -112,52 +124,53 @@
       <!-- === LAB 3 OBJECTS: Stick Maze === -->
 
     <!-- Maze built from fixed walls on the table -->
-    <body name="maze" pos="0.6 0 0.44">
-      <!-- Three parallel walls -->
-      <geom name="maze_wall1" type="box"
-            size="0.12 0.01 0.03"
-            pos="0.0 -0.10 0.03"
-            rgba="0.4 0.4 0.4 1"/>
+        <!-- Maze built from a mesh -->
+    <!-- Replace the old maze body with this -->
+        <!-- Maze built from one mesh sitting on the table -->
+    <body name="maze" pos="0.6 0 0.42">  <!-- z = table height -->
+      <!-- purely visual mesh -->
+      <geom name="maze_visual"
+            type="mesh"
+            mesh="maze_mesh"
+            rgba="0.4 0.4 0.4 1"
+            contype="0"
+            conaffinity="0"/>
 
-      <geom name="maze_wall2" type="box"
-            size="0.12 0.01 0.03"
-            pos="0.0 0.00 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <geom name="maze_wall3" type="box"
-            size="0.12 0.01 0.03"
-            pos="0.0 0.10 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <!-- Two connectors to form a path -->
-      <geom name="maze_bar1" type="box"
-            size="0.01 0.05 0.03"
-            pos="-0.08 -0.05 0.03"
-            rgba="0.4 0.4 0.4 1"/>
-
-      <geom name="maze_bar2" type="box"
-            size="0.01 0.05 0.03"
-            pos="0.08 0.05 0.03"
-            rgba="0.4 0.4 0.4 1"/>
+      <!-- invisible collision mesh, same geometry -->
+      <geom name="maze_collision"
+            type="mesh"
+            mesh="maze_mesh"
+            rgba="0 0 1 0"      
+            contype="1"
+            conaffinity="1"/>
     </body>
 
-    <!-- Stick with a front "ring" -->
+    <!-- Stick using OBJ mesh -->
+        <!-- Stick with custom mesh -->
     <body name="stick" pos="0.5 -0.2 0.46">
       <joint name="stick_free" type="free"/>
 
-      <!-- Long rod (lying roughly in +x direction) -->
-      <geom name="stick_rod" type="cylinder"
-            size="0.01 0.25" 
-            pos="0 0 0"
-            euler="0 90 0"
-            rgba="0.8 0.8 0.2 1"/>
+      <!-- Visual mesh -->
+      <geom name="stick_visual"
+            type="mesh"
+            mesh="stick_mesh"
+            rgba="0.8 0.8 0.2 1"
+            contype="0"
+            conaffinity="0"/>
 
-      <!-- Slightly thicker tip as proxy for a ring -->
-      <geom name="stick_tip" type="cylinder"
-            size="0.02 0.01"
-            pos="0.25 0 0"
-            euler="0 90 0"
-            rgba="0.9 0.9 0.1 1"/>
+      <!-- Collision mesh -->
+      <geom name="stick_collision"
+            type="mesh"
+            mesh="stick_mesh"
+            rgba="0 1 0 0"     
+            contype="1"
+            conaffinity="1"/>
+
+      <geom name="stick_mesh_collision"
+        type="mesh"
+        mesh="stick_mesh"
+        contype="1" conaffinity="0"
+        rgba="0 0 0 0"/>   <!-- make collision mesh invisible too -->
     </body>
       <!-- Ground -->
     <geom name="ground" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1"/>

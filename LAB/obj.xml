@@ -1,0 +1,9 @@
+<mujoco model="obj_viewer">
+    <asset>
+        <mesh name="my_obj" file="Basic_Holder_Model_EUD-Body001.obj"/>
+    </asset>
+
+    <worldbody>
+        <geom type="mesh" mesh="my_obj" rgba="0.8 0.2 0.2 1" />
+    </worldbody>
+</mujoco>
