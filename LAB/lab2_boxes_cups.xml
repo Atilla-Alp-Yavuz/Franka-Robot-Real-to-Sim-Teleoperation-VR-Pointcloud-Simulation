@@ -1,4 +1,4 @@
-quat="0 1 0 0"/><mujoco model="panda">
+<mujoco model="panda">
   <compiler angle="radian" meshdir="franka_emika_panda/assets"/>
 
   <default>
@@ -112,87 +112,101 @@ quat="0 1 0 0"/><mujoco model="panda">
       <!-- === LAB 2 OBJECTS: Boxes + Cups === -->
 
     <!-- Cereal box: tall rectangular prism -->
-    <body name="cereal_box" pos="0.55 -0.15 0.45">
+    <body name="cereal_box" pos="0.55 -0.15 0.527">
       <joint name="cereal_free" type="free"/>
       <geom name="cereal_geom" type="box"
-            size="0.03 0.06 0.12"
+            size="0.08 0.03 0.105"
             rgba="0.9 0.9 0.2 1"/>
     </body>
 
     <!-- Square box -->
-<body name="square_box" pos="0.65 -0.05 0.45">
-  <joint name="square_free" type="free"/>
-  <geom name="square_geom" type="box"
-        size="0.08 0.04 0.05"  
-        rgba="0.8 0.2 0.2 1"/> <!-- slightly more red if you like -->
-</body>
+    <body name="square_box" pos="0.65 -0.05 0.467">
+      <joint name="square_free" type="free"/>
+      <geom name="square_geom" type="box"
+            size="0.0875 0.0175 0.045"  
+            rgba="0.8 0.2 0.2 1"/> <!-- slightly more red if you like -->
+    </body>
+    <!-- Cups as solid cylinders (10 cm tall) -->
+    <body name="cup1" pos="0.55 0.05 0.472">
+      <joint name="cup1_free" type="free"/>
 
-    <!-- Cups as solid cylinders -->
-    <body name="cup1" pos="0.55 0.05 0.45">
-    <joint name="cup1_free" type="free"/>
+      <!-- Collision shape (solid cylinder, invisible) -->
+      <geom name="cup1_collision" type="cylinder"
+            size="0.0525 0.05"
+            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
 
-    <!-- Collision shape (solid cylinder, invisible) -->
-    <geom name="cup1_collision" type="cylinder"
-            size="0.02 0.06"
-            rgba="0 0 0 0"       
-            group="3"/>          <!-- collision group -->
-
-    <!-- Outer visual wall -->
-    <geom name="cup1_outer" type="cylinder"
-            size="0.02 0.06"
+      <!-- Outer visual wall -->
+      <geom name="cup1_outer" type="cylinder"
+            size="0.0525 0.05"
             rgba="0.7 0.7 0.8 1"
             contype="0" conaffinity="0"
             group="2"/>
 
-    <!-- Inner visual surface (slightly smaller, lighter) -->
-    <geom name="cup1_inner" type="cylinder"
-            size="0.017 0.055"
+      <!-- Inner visual surface -->
+      <geom name="cup1_inner" type="cylinder"
+            size="0.0495 0.045"
             rgba="0.95 0.95 0.95 1"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
 
-    <body name="cup2" pos="0.60 0.05 0.45">
-    <joint name="cup2_free" type="free"/>
-    <geom name="cup2_collision" type="cylinder"
-            size="0.02 0.06"
-            rgba="0 0 0 0"
-            group="3"/>
-    <geom name="cup2_outer" type="cylinder"
-            size="0.02 0.06"
+    <body name="cup2" pos="0.65 0.05 0.472">
+      <joint name="cup2_free" type="free"/>
+      <geom name="cup2_collision" type="cylinder"
+            size="0.05 0.05"
+            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
+      <geom name="cup2_outer" type="cylinder"
+            size="0.05 0.05"
             rgba="0.7 0.7 0.8 1"
             contype="0" conaffinity="0"
             group="2"/>
-    <geom name="cup2_inner" type="cylinder"
-            size="0.017 0.055"
+      <geom name="cup2_inner" type="cylinder"
+            size="0.047 0.045"
             rgba="0.95 0.95 0.95 1"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
 
-    <body name="cup3" pos="0.65 0.05 0.45">
-    <joint name="cup3_free" type="free"/>
-    <geom name="cup3_collision" type="cylinder"
-            size="0.02 0.06"
-            rgba="0 0 0 0"
-            group="3"/>
-    <geom name="cup3_outer" type="cylinder"
-            size="0.02 0.06"
+    <body name="cup3" pos="0.70 0.05 0.472">
+      <joint name="cup3_free" type="free"/>
+      <geom name="cup3_collision" type="cylinder"
+            size="0.0475 0.05"
+            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
+      <geom name="cup3_outer" type="cylinder"
+            size="0.0475 0.05"
             rgba="0.7 0.7 0.8 1"
             contype="0" conaffinity="0"
             group="2"/>
-    <geom name="cup3_inner" type="cylinder"
-            size="0.017 0.055"
+      <geom name="cup3_inner" type="cylinder"
+            size="0.0445 0.045"
             rgba="0.95 0.95 0.95 1"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
+
+    <body name="cup4" pos="0.80 0.05 0.472">
+      <joint name="cup4_free" type="free"/>
+      <geom name="cup4_collision" type="cylinder"
+            size="0.045 0.05"
+            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
+      <geom name="cup4_outer" type="cylinder"
+            size="0.045 0.05"
+            rgba="0.7 0.7 0.8 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+      <geom name="cup4_inner" type="cylinder"
+            size="0.042 0.045"
+            rgba="0.95 0.95 0.95 1"
+            contype="0" conaffinity="0"
+            group="2"/>
+    </body>
+
       <!-- Ground -->
     <geom name="ground" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1"/>
 
     <!-- Table -->
     <body name="table" pos="0.6 0 0.4">
-      <geom type="box" size="0.35 0.35 0.02" rgba="0.6 0.4 0.3 1"/>
+      <geom type="box" size="0.35 0.35 0.02" rgba="0.6 0.4 0.3 1" friction="1.2 0.01 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001"/>
     </body>
 
 
