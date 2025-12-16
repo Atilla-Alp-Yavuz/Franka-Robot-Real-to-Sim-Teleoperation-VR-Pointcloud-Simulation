@@ -34,6 +34,25 @@
   </default>
 
   <asset>
+        <!-- Cup meshes (visual) -->
+    <mesh name="cupA_mesh" file="A_Cup_textured.obj"/>
+    <mesh name="cupB_mesh" file="B_Cup_textured.obj"/>
+    <mesh name="cupC_mesh" file="C_Cup_textured.obj"/>
+    <mesh name="cupD_mesh" file="D_Cup_textured.obj"/>
+
+    <!-- Optional: simple materials (OBJ textures/MTL aren’t guaranteed to load, so give them a decent fallback) -->
+    <material name="cupA_mat" rgba="0.75 0.78 0.85 1" shininess="0.2"/>
+    <material name="cupB_mat" rgba="0.75 0.78 0.85 1" shininess="0.2"/>
+    <material name="cupC_mat" rgba="0.75 0.78 0.85 1" shininess="0.2"/>
+    <material name="cupD_mat" rgba="0.75 0.78 0.85 1" shininess="0.2"/>
+    <!-- Box meshes (visual) -->
+    <mesh name="cheez_mesh" file="cheez_textured.obj"/>
+    <mesh name="sugar_mesh" file="sugar_textured.obj"/>
+
+    <!-- Optional fallback materials -->
+    <material name="cheez_mat" rgba="0.95 0.85 0.25 1" shininess="0.15"/>
+    <material name="sugar_mat" rgba="0.95 0.95 0.95 1" shininess="0.10"/>
+
     <material name="white" class="panda"/>
     <material name="off_white" class="panda" rgba="0.901961 0.921569 0.929412 1"/>
     <material name="black" class="panda" rgba="0.25 0.25 0.25 1"/>
@@ -111,92 +130,96 @@
   <worldbody>
       <!-- === LAB 2 OBJECTS: Boxes + Cups === -->
 
-    <!-- Cereal box: tall rectangular prism -->
-    <body name="cereal_box" pos="0.55 -0.15 0.527">
-      <joint name="cereal_free" type="free"/>
-      <geom name="cereal_geom" type="box"
-            size="0.08 0.03 0.105"
-            rgba="0.9 0.9 0.2 1"/>
-    </body>
+    <!-- Cheez box: visual mesh + box collision -->
+    <body name="cheez_box" pos="0.55 -0.15 0.42">
+      <joint name="cheez_free" type="free"/>
 
-    <!-- Square box -->
-    <body name="square_box" pos="0.65 -0.05 0.467">
-      <joint name="square_free" type="free"/>
-      <geom name="square_geom" type="box"
-            size="0.0875 0.0175 0.045"  
-            rgba="0.8 0.2 0.2 1"/> <!-- slightly more red if you like -->
-    </body>
-    <!-- Cups as solid cylinders (10 cm tall) -->
-    <body name="cup1" pos="0.55 0.05 0.472">
-      <joint name="cup1_free" type="free"/>
+      <!-- Collision box (half-sizes), positioned so bottom sits on table -->
+      <geom name="cheez_collision" type="box"
+            size="0.035906 0.082028 0.106730"
+            pos="0 0 0.106730"
+            rgba="0 0 0 0"
+            friction="1.2 0.01 0.0001"
+            solref="0.02 1" solimp="0.9 0.95 0.001"
+            group="3"/>
 
-      <!-- Collision shape (solid cylinder, invisible) -->
-      <geom name="cup1_collision" type="cylinder"
-            size="0.0525 0.05"
-            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
-
-      <!-- Outer visual wall -->
-      <geom name="cup1_outer" type="cylinder"
-            size="0.0525 0.05"
-            rgba="0.7 0.7 0.8 1"
-            contype="0" conaffinity="0"
-            group="2"/>
-
-      <!-- Inner visual surface -->
-      <geom name="cup1_inner" type="cylinder"
-            size="0.0495 0.045"
-            rgba="0.95 0.95 0.95 1"
+      <!-- Visual mesh (shifted so it’s centered and its bottom is at z=0 in body frame) -->
+      <geom name="cheez_visual" type="mesh" mesh="cheez_mesh"
+            material="cheez_mat"
+            pos="0.012904 0.014144 0.003253"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
 
-    <body name="cup2" pos="0.65 0.05 0.472">
+    <!-- Sugar box: visual mesh + box collision -->
+    <body name="sugar_box" pos="0.65 -0.05 0.42">
+      <joint name="sugar_free" type="free"/>
+
+      <geom name="sugar_collision" type="box"
+            size="0.024730 0.047074 0.088010"
+            pos="0 0 0.088010"
+            rgba="0 0 0 0"
+            friction="1.2 0.01 0.0001"
+            solref="0.02 1" solimp="0.9 0.95 0.001"
+            group="3"/>
+
+      <geom name="sugar_visual" type="mesh" mesh="sugar_mesh"
+            material="sugar_mat"
+            pos="0.007456 0.016682 0.0"
+            contype="0" conaffinity="0"
+            group="2"/>
+    </body>
+
+    <body name="cup2" pos="0.65 0.05 0.42">
       <joint name="cup2_free" type="free"/>
+
       <geom name="cup2_collision" type="cylinder"
-            size="0.05 0.05"
-            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
-      <geom name="cup2_outer" type="cylinder"
-            size="0.05 0.05"
-            rgba="0.7 0.7 0.8 1"
-            contype="0" conaffinity="0"
-            group="2"/>
-      <geom name="cup2_inner" type="cylinder"
-            size="0.047 0.045"
-            rgba="0.95 0.95 0.95 1"
+            size="0.03047 0.0319645"
+            pos="0 0 0.0319645"
+            rgba="0 0 0 0"
+            friction="1 0.005 0.0001"
+            solref="0.02 1" solimp="0.9 0.95 0.001"
+            group="3"/>
+
+      <geom name="cup2_visual" type="mesh" mesh="cupB_mesh"
+            material="cupB_mat"
+            pos="0.027781 0.056345 0.000605"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
 
-    <body name="cup3" pos="0.70 0.05 0.472">
+    <body name="cup3" pos="0.70 0.05 0.42">
       <joint name="cup3_free" type="free"/>
+
       <geom name="cup3_collision" type="cylinder"
-            size="0.0475 0.05"
-            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
-      <geom name="cup3_outer" type="cylinder"
-            size="0.0475 0.05"
-            rgba="0.7 0.7 0.8 1"
-            contype="0" conaffinity="0"
-            group="2"/>
-      <geom name="cup3_inner" type="cylinder"
-            size="0.0445 0.045"
-            rgba="0.95 0.95 0.95 1"
+            size="0.032524 0.03327"
+            pos="0 0 0.03327"
+            rgba="0 0 0 0"
+            friction="1 0.005 0.0001"
+            solref="0.02 1" solimp="0.9 0.95 0.001"
+            group="3"/>
+
+      <geom name="cup3_visual" type="mesh" mesh="cupC_mesh"
+            material="cupC_mat"
+            pos="0.0155105 0.067523 0.00055"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
 
-    <body name="cup4" pos="0.80 0.05 0.472">
+    <body name="cup4" pos="0.80 0.05 0.42">
       <joint name="cup4_free" type="free"/>
+
       <geom name="cup4_collision" type="cylinder"
-            size="0.045 0.05"
-            rgba="0 0 0 0" friction="1 0.005 0.0001" solref="0.02 1" solimp="0.9 0.95 0.001" group="3"/>
-      <geom name="cup4_outer" type="cylinder"
-            size="0.045 0.05"
-            rgba="0.7 0.7 0.8 1"
-            contype="0" conaffinity="0"
-            group="2"/>
-      <geom name="cup4_inner" type="cylinder"
-            size="0.042 0.045"
-            rgba="0.95 0.95 0.95 1"
+            size="0.0353505 0.034452"
+            pos="0 0 0.034452"
+            rgba="0 0 0 0"
+            friction="1 0.005 0.0001"
+            solref="0.02 1" solimp="0.9 0.95 0.001"
+            group="3"/>
+
+      <geom name="cup4_visual" type="mesh" mesh="cupD_mesh"
+            material="cupD_mat"
+            pos="0.0196075 0.062642 0.000567"
             contype="0" conaffinity="0"
             group="2"/>
     </body>
