@@ -3,10 +3,12 @@ import mujoco
 from simpub.sim.mj_publisher import MujocoPublisher
 
 XML_PATH = r"C:\Users\AtillaGokay\Desktop\Franka-Robot-Real-to-Sim-Teleoperation-VR-Pointcloud-Simulation\LAB\lab1_T_stack.xml"
-HOST = "127.0.0.1"
+HOST = "192.168.0.208"
+NAMES = mujoco.mjtObj.mjOBJ_ALL # "IRLMQ3-1"
 
 model = mujoco.MjModel.from_xml_path(XML_PATH)
 data = mujoco.MjData(model)
+name = model.names(NAMES)
 
 publisher = MujocoPublisher(
     model,

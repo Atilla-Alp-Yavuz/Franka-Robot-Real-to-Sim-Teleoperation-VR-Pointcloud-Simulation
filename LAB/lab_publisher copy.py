@@ -58,3 +58,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    #python demos/mujoco/lab_publisher.py --lab 2 --host 192.168.0.208
+
