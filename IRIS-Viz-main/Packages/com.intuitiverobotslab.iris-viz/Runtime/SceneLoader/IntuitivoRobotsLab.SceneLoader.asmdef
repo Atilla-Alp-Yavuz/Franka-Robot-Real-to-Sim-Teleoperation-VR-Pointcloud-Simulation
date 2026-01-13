@@ -1,0 +1,16 @@
+{
+    "name": "IntuitivoRobotsLab.IRIS-Viz.SceneLoader",
+    "rootNamespace": "",
+    "references": [
+        "IntuitivoRobotsLab.IRIS-Viz.IRISNode"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
