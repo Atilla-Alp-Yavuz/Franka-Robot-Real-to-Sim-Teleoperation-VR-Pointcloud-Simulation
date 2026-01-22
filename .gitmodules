@@ -1,3 +1,6 @@
 [submodule "SimPublisher"]
 	path = SimPublisher
 	url = https://github.com/intuitive-robots/SimPublisher
+[submodule "IRIS-Meta-Quest3"]
+	path = IRIS-Meta-Quest3
+	url = https://github.com/intuitive-robots/IRIS-Meta-Quest3
