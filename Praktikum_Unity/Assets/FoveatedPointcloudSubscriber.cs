@@ -94,6 +94,6 @@ public class FoveatedPointcloudSubscriber : MonoBehaviour
         _running = false;
         _listenerThread?.Join();
         _subSocket?.Close();
-        NetMQConfig.Cleanup();
+        //NetMQConfig.Cleanup();
     }
 }
