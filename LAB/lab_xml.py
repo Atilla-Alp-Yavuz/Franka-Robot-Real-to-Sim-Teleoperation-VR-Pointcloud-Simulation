@@ -8,7 +8,7 @@ LAB_XMLS = {
     0: "lab0.xml",
     1: "lab1_T_stack.xml",
     2: "lab2_boxes_cups.xml",
-    3: "lab3_stick_maze.xml",
+    3: "lab3_stick_maze_vizCollisionSeparated_v3_groups_named.xml",
 }
 
 HERE = Path(__file__).resolve().parent  # .../LAB
