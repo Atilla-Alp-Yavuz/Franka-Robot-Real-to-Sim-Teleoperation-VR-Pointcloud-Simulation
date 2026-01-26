@@ -78,3 +78,8 @@ crashlytics-build.properties
 /Assets/NuGet.meta
 /Assets/Packages
 /Assets/Packages.meta
+
+# --- Allow IRIS Meta Quest assets ---
+!/Assets/
+!/Assets/IRISMetaQuest3/
+!/Assets/IRISMetaQuest3/**

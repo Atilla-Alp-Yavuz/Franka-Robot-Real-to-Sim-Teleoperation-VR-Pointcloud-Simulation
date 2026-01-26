@@ -69,6 +69,6 @@ public class FakePointcloudPublisher : MonoBehaviour
         _running = false;
         _thread?.Join();
         _pub?.Close();
-        NetMQConfig.Cleanup();
+        //NetMQConfig.Cleanup();
     }
 }

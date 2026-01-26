@@ -35,6 +35,6 @@ public class IrisGazeSender : MonoBehaviour
     void OnDestroy()
     {
         _pubSocket?.Close();
-        NetMQConfig.Cleanup();
+        //NetMQConfig.Cleanup();
     }
 }
