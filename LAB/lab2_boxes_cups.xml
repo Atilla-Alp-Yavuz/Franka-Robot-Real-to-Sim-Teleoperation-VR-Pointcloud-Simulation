@@ -35,10 +35,10 @@
 
   <asset>
         <!-- Cup meshes (visual) -->
-    <mesh name="cupA_mesh" file="A_Cup_textured.obj"/>
-    <mesh name="cupB_mesh" file="B_Cup_textured.obj"/>
-    <mesh name="cupC_mesh" file="C_Cup_textured.obj"/>
-    <mesh name="cupD_mesh" file="D_Cup_textured.obj"/>
+    <mesh name="cupA_mesh" content_type="model/obj"file="A_Cup_textured.obj"/>
+    <mesh name="cupB_mesh" content_type="model/obj"file="B_Cup_textured.obj"/>
+    <mesh name="cupC_mesh" content_type="model/obj"file="C_Cup_textured.obj"/>
+    <mesh name="cupD_mesh" content_type="model/obj"file="D_Cup_textured.obj"/>
 
     <!-- Optional: simple materials (OBJ textures/MTL aren’t guaranteed to load, so give them a decent fallback) -->
     <material name="cupA_mat" rgba="0.75 0.78 0.85 1" shininess="0.2"/>
