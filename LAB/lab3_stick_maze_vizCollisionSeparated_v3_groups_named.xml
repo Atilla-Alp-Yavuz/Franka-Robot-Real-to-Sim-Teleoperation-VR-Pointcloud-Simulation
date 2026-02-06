@@ -620,27 +620,27 @@
     
     
     
-    <camera name="overhead" pos="0.6 0 1.2" euler="-1.5708 0 0"/>
+    <camera name="overhead" pos="0.6 0 1.2" xyaxes="-1 0 0 0 1 0"/>
     
     
     
     
-    <camera name="top" pos="0 0 1.5" euler="-1.5708 0 0"/>
+    <camera name="top" pos="0.6 0 1.5" xyaxes="-1 0 0 0 1 0"/>
     
     
     
     
-    <camera name="front" pos="1.2 0 0.6" euler="0 1.5708 0"/>
+    <camera name="front" pos="1.2 0 0.6" xyaxes="0 -1 0 -0.316228 0 0.948683"/>
     
     
     
     
-    <camera name="right" pos="0 1.2 0.6" euler="0 0 1.5708"/>
+    <camera name="right" pos="0 1.2 0.6" xyaxes="0.894427 0.447214 0 0.065938 -0.131876 0.989071"/>
     
     
     
     
-    <camera name="left" pos="0 -1.2 0.6" euler="0 0 -1.5708"/>
+    <camera name="left" pos="0 -1.2 0.6" xyaxes="-0.894427 0.447214 0 0.065938 0.131876 0.989071"/>
     
     
     
@@ -1106,6 +1106,7 @@
                       
                       
                       <site name="gripper" pos="0 0 0.1"/>
+                      <camera name="wrist" pos="0 0 0.08" euler="0 0 0"/>
                       
                       
                       
