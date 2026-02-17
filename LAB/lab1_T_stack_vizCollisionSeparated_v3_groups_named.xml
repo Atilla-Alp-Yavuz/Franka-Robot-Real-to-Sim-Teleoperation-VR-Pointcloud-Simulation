@@ -606,7 +606,7 @@
     
     
     
-    <geom name="ground_visual" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0" group="2" mass="0"/>
+    <geom name="ground_visual" type="plane" size="2 2 0.1" pos="0 0 0" rgba="0.3 0.3 0.3 1" contype="0" conaffinity="0" group="9" mass="0"/>
     
     
     <body name="table" pos="0.6 0 0.4">
