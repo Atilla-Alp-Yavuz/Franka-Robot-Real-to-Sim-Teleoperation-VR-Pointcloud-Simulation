@@ -35,10 +35,10 @@
 
   <asset>
         <!-- Cup meshes (visual) -->
-    <mesh name="cupA_mesh" content_type="model/obj"file="A_Cup_textured.obj"/>
-    <mesh name="cupB_mesh" content_type="model/obj"file="B_Cup_textured.obj"/>
-    <mesh name="cupC_mesh" content_type="model/obj"file="C_Cup_textured.obj"/>
-    <mesh name="cupD_mesh" content_type="model/obj"file="D_Cup_textured.obj"/>
+    <mesh name="cupA_mesh" content_type="model/obj" file="A_Cup_textured.obj"/>
+    <mesh name="cupB_mesh" content_type="model/obj" file="B_Cup_textured.obj"/>
+    <mesh name="cupC_mesh" content_type="model/obj" file="C_Cup_textured.obj"/>
+    <mesh name="cupD_mesh" content_type="model/obj" file="D_Cup_textured.obj"/>
 
     <!-- Optional: simple materials (OBJ textures/MTL aren’t guaranteed to load, so give them a decent fallback) -->
     <material name="cupA_mat" rgba="0.75 0.78 0.85 1" shininess="0.2"/>
@@ -247,18 +247,83 @@
 
     <!-- Front: in +x, looking towards origin -->
     <camera name="front"
-            pos="1.2 0 0.6"
-            xyaxes="0 1 0 -0.316228 0 0.948683"/>
+            pos="1.32 0 1.04"
+            xyaxes="0 1 0 -0.570396 0 0.82137"/>
 
     <!-- Right: in +y, looking towards origin -->
     <camera name="right"
-            pos="0 1.2 0.6"
-            xyaxes="-0.894427 -0.447214 0 0.065938 -0.131876 0.989071"/>
+            pos="1.08 0.7 0.96"
+            xyaxes="-0.824729 0.565528 0 -0.287044 -0.418606 0.861611"/>
 
     <!-- Left: in -y, looking towards origin -->
     <camera name="left"
-            pos="0 -1.2 0.6"
-            xyaxes="0.894427 -0.447214 0 0.065938 0.131876 0.989071"/>
+            pos="1.08 -0.7 0.96"
+            xyaxes="0.824729 0.565528 0 -0.287044 0.418606 0.861611"/>
+
+    <!-- Front camera prism marker -->
+    <geom name="camviz_front_origin" type="sphere" size="0.01" pos="1.32 0 1.04"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_ray_top" type="capsule" size="0.0022"
+          fromto="1.32 0 1.04 0.70263 0 0.842048"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_ray_bl" type="capsule" size="0.0022"
+          fromto="1.32 0 1.04 0.918871 -0.237996 0.530661"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_ray_br" type="capsule" size="0.0022"
+          fromto="1.32 0 1.04 0.918871 0.237996 0.530661"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_edge1" type="capsule" size="0.0018"
+          fromto="0.70263 0 0.842048 0.918871 -0.237996 0.530661"
+          rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_edge2" type="capsule" size="0.0018"
+          fromto="0.918871 -0.237996 0.530661 0.918871 0.237996 0.530661"
+          rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_edge3" type="capsule" size="0.0018"
+          fromto="0.918871 0.237996 0.530661 0.70263 0 0.842048"
+          rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
+
+    <!-- Camera frustum markers (triangular prism style) for front/left/right coverage debugging -->
+    <geom name="camviz_right_origin" type="sphere" size="0.01" pos="1.08 0.7 0.96"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_ray_top" type="capsule" size="0.0022"
+          fromto="1.08 0.7 0.96 0.723485 0.180082 0.808629"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_ray_bl" type="capsule" size="0.0022"
+          fromto="1.08 0.7 0.96 1.028587 0.204185 0.481987"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_ray_br" type="capsule" size="0.0022"
+          fromto="1.08 0.7 0.96 0.636023 0.473372 0.481987"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_edge1" type="capsule" size="0.0018"
+          fromto="0.723485 0.180082 0.808629 1.028587 0.204185 0.481987"
+          rgba="1 0.5 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_edge2" type="capsule" size="0.0018"
+          fromto="1.028587 0.204185 0.481987 0.636023 0.473372 0.481987"
+          rgba="1 0.5 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_edge3" type="capsule" size="0.0018"
+          fromto="0.636023 0.473372 0.481987 0.723485 0.180082 0.808629"
+          rgba="1 0.5 0.5 1" contype="0" conaffinity="0" group="2"/>
+
+    <geom name="camviz_left_origin" type="sphere" size="0.01" pos="1.08 -0.7 0.96"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_ray_top" type="capsule" size="0.0022"
+          fromto="1.08 -0.7 0.96 0.723485 -0.180082 0.808629"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_ray_bl" type="capsule" size="0.0022"
+          fromto="1.08 -0.7 0.96 0.636023 -0.473372 0.481987"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_ray_br" type="capsule" size="0.0022"
+          fromto="1.08 -0.7 0.96 1.028587 -0.204185 0.481987"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_edge1" type="capsule" size="0.0018"
+          fromto="0.723485 -0.180082 0.808629 0.636023 -0.473372 0.481987"
+          rgba="0.5 0.8 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_edge2" type="capsule" size="0.0018"
+          fromto="0.636023 -0.473372 0.481987 1.028587 -0.204185 0.481987"
+          rgba="0.5 0.8 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_edge3" type="capsule" size="0.0018"
+          fromto="1.028587 -0.204185 0.481987 0.723485 -0.180082 0.808629"
+          rgba="0.5 0.8 1 1" contype="0" conaffinity="0" group="2"/>
     <light name="top" pos="0 0 2" dir="0 0 -1" mode="trackcom"/>
     <body name="link0" childclass="panda">
       <inertial pos="-0.041018 -0.00014 0.049974" quat="0.00630474 0.751245 0.00741774 0.659952" mass="0.629769" diaginertia="0.00430465 0.00387984 0.00313051"/>
@@ -352,7 +417,7 @@
                       <geom class="collision" mesh="hand_c"/>
                       <geom name="hand_capsule" class="collision" size="0.04 0.06" pos="0 0 0.03" quat="0.707107 0.707107 0 0" type="capsule" conaffinity="1"/>
                       <site name="gripper" pos="0 0 0.1"/>
-                      <camera name="wrist" pos="0 0 0.08" euler="0 0 0"/>
+                      <camera name="wrist" pos="0 0 0.08" euler="3.14159 0 0"/>
                       <body name="left_finger" pos="0 0 0.0584">
                         <inertial pos="0 0 0" mass="0.015" diaginertia="2.375e-06 2.375e-06 7.5e-07"/>
                         <joint name="finger_joint1" class="finger" pos="0 0 0" axis="0 1 0" damping="10"/>

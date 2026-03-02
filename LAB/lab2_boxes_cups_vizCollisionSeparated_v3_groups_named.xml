@@ -741,17 +741,82 @@
 
 
 
-    <camera name="front" pos="1.2 0 0.6" xyaxes="0 1 0 -0.316228 0 0.948683"/>
+    <camera name="front" pos="1.32 0 1.04" xyaxes="0 1 0 -0.570396 0 0.82137"/>
 
 
 
 
-    <camera name="right" pos="0 1.2 0.6" xyaxes="-0.894427 -0.447214 0 0.065938 -0.131876 0.989071"/>
+    <camera name="right" pos="1.08 0.7 0.96" xyaxes="-0.824729 0.565528 0 -0.287044 -0.418606 0.861611"/>
 
 
 
 
-    <camera name="left" pos="0 -1.2 0.6" xyaxes="0.894427 -0.447214 0 0.065938 0.131876 0.989071"/>
+    <camera name="left" pos="1.08 -0.7 0.96" xyaxes="0.824729 0.565528 0 -0.287044 0.418606 0.861611"/>
+
+    <!-- Front camera prism marker -->
+    <geom name="camviz_front_origin" type="sphere" size="0.01" pos="1.32 0 1.04"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_ray_top" type="capsule" size="0.0022"
+          fromto="1.32 0 1.04 0.70263 0 0.842048"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_ray_bl" type="capsule" size="0.0022"
+          fromto="1.32 0 1.04 0.918871 -0.237996 0.530661"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_ray_br" type="capsule" size="0.0022"
+          fromto="1.32 0 1.04 0.918871 0.237996 0.530661"
+          rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_edge1" type="capsule" size="0.0018"
+          fromto="0.70263 0 0.842048 0.918871 -0.237996 0.530661"
+          rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_edge2" type="capsule" size="0.0018"
+          fromto="0.918871 -0.237996 0.530661 0.918871 0.237996 0.530661"
+          rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_front_edge3" type="capsule" size="0.0018"
+          fromto="0.918871 0.237996 0.530661 0.70263 0 0.842048"
+          rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
+
+    <!-- Camera frustum markers (triangular prism style) for front/left/right coverage debugging -->
+    <geom name="camviz_right_origin" type="sphere" size="0.01" pos="1.08 0.7 0.96"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_ray_top" type="capsule" size="0.0022"
+          fromto="1.08 0.7 0.96 0.723485 0.180082 0.808629"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_ray_bl" type="capsule" size="0.0022"
+          fromto="1.08 0.7 0.96 1.028587 0.204185 0.481987"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_ray_br" type="capsule" size="0.0022"
+          fromto="1.08 0.7 0.96 0.636023 0.473372 0.481987"
+          rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_edge1" type="capsule" size="0.0018"
+          fromto="0.723485 0.180082 0.808629 1.028587 0.204185 0.481987"
+          rgba="1 0.5 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_edge2" type="capsule" size="0.0018"
+          fromto="1.028587 0.204185 0.481987 0.636023 0.473372 0.481987"
+          rgba="1 0.5 0.5 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_right_edge3" type="capsule" size="0.0018"
+          fromto="0.636023 0.473372 0.481987 0.723485 0.180082 0.808629"
+          rgba="1 0.5 0.5 1" contype="0" conaffinity="0" group="2"/>
+
+    <geom name="camviz_left_origin" type="sphere" size="0.01" pos="1.08 -0.7 0.96"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_ray_top" type="capsule" size="0.0022"
+          fromto="1.08 -0.7 0.96 0.723485 -0.180082 0.808629"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_ray_bl" type="capsule" size="0.0022"
+          fromto="1.08 -0.7 0.96 0.636023 -0.473372 0.481987"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_ray_br" type="capsule" size="0.0022"
+          fromto="1.08 -0.7 0.96 1.028587 -0.204185 0.481987"
+          rgba="0.2 0.6 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_edge1" type="capsule" size="0.0018"
+          fromto="0.723485 -0.180082 0.808629 0.636023 -0.473372 0.481987"
+          rgba="0.5 0.8 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_edge2" type="capsule" size="0.0018"
+          fromto="0.636023 -0.473372 0.481987 1.028587 -0.204185 0.481987"
+          rgba="0.5 0.8 1 1" contype="0" conaffinity="0" group="2"/>
+    <geom name="camviz_left_edge3" type="capsule" size="0.0018"
+          fromto="1.028587 -0.204185 0.481987 0.723485 -0.180082 0.808629"
+          rgba="0.5 0.8 1 1" contype="0" conaffinity="0" group="2"/>
     
     
     
