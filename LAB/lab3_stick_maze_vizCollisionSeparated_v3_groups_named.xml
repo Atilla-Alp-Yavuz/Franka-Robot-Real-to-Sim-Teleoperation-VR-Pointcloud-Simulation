@@ -642,29 +642,29 @@
     
     <camera name="left" pos="1.08 -0.7 0.96" xyaxes="0.824729 0.565528 0 -0.287044 0.418606 0.861611"/>
 
-    <!-- Front camera prism marker -->
-    <geom name="camviz_front_origin" type="sphere" size="0.01" pos="1.32 0 1.04"
+    <!-- Top camera prism marker -->
+    <geom name="camviz_top_origin" type="sphere" size="0.01" pos="0.6 0 1.1"
           rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
-    <geom name="camviz_front_ray_top" type="capsule" size="0.0022"
-          fromto="1.32 0 1.04 0.70263 0 0.842048"
+    <geom name="camviz_top_ray_top" type="capsule" size="0.0022"
+          fromto="0.6 0 1.1 0.6 0.189553 0.48"
           rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
-    <geom name="camviz_front_ray_bl" type="capsule" size="0.0022"
-          fromto="1.32 0 1.04 0.918871 -0.237996 0.530661"
+    <geom name="camviz_top_ray_bl" type="capsule" size="0.0022"
+          fromto="0.6 0 1.1 0.362004 -0.189553 0.48"
           rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
-    <geom name="camviz_front_ray_br" type="capsule" size="0.0022"
-          fromto="1.32 0 1.04 0.918871 0.237996 0.530661"
+    <geom name="camviz_top_ray_br" type="capsule" size="0.0022"
+          fromto="0.6 0 1.1 0.837996 -0.189553 0.48"
           rgba="1 0.8 0.2 1" contype="0" conaffinity="0" group="2"/>
-    <geom name="camviz_front_edge1" type="capsule" size="0.0018"
-          fromto="0.70263 0 0.842048 0.918871 -0.237996 0.530661"
+    <geom name="camviz_top_edge1" type="capsule" size="0.0018"
+          fromto="0.6 0.189553 0.48 0.362004 -0.189553 0.48"
           rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
-    <geom name="camviz_front_edge2" type="capsule" size="0.0018"
-          fromto="0.918871 -0.237996 0.530661 0.918871 0.237996 0.530661"
+    <geom name="camviz_top_edge2" type="capsule" size="0.0018"
+          fromto="0.362004 -0.189553 0.48 0.837996 -0.189553 0.48"
           rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
-    <geom name="camviz_front_edge3" type="capsule" size="0.0018"
-          fromto="0.918871 0.237996 0.530661 0.70263 0 0.842048"
+    <geom name="camviz_top_edge3" type="capsule" size="0.0018"
+          fromto="0.837996 -0.189553 0.48 0.6 0.189553 0.48"
           rgba="1 0.9 0.5 1" contype="0" conaffinity="0" group="2"/>
 
-    <!-- Camera frustum markers (triangular prism style) for front/left/right coverage debugging -->
+    <!-- Camera frustum markers (triangular prism style) for top/left/right coverage debugging -->
     <geom name="camviz_right_origin" type="sphere" size="0.01" pos="1.08 0.7 0.96"
           rgba="1 0.2 0.2 1" contype="0" conaffinity="0" group="2"/>
     <geom name="camviz_right_ray_top" type="capsule" size="0.0022"
