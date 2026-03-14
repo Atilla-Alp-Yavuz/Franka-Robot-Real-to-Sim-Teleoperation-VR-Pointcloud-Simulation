@@ -1,0 +1,328 @@
+PROJECT HANDOFF / PROMPT CONTEXT
+
+Project name:
+Franka-Robot-Real-to-Sim-Teleoperation-VR-Pointcloud-Simulation
+
+Primary end goal:
+Build a stable Meta Quest 3 teleoperation / visualization workflow for a Franka robot simulation where:
+- Unity project IRIS-Meta-Quest3 is the active Quest application.
+- SimPublisher is the active Python-side publisher.
+- The user can see the robot, point clouds, and a wrist camera panel in VR.
+- The wrist camera panel is mounted on the robot itself, not floating in front of the viewer.
+- Point clouds are useful, aligned, and performant enough for Quest.
+
+Active project scope:
+- We worked in these two codebases only:
+  1. IRIS-Meta-Quest3
+  2. SimPublisher
+- We did NOT intentionally build the workflow around MVPointCloudVR or other side projects.
+
+High-level architecture:
+- SimPublisher renders MuJoCo camera RGB/depth and publishes:
+  - RGBD topics
+  - point cloud topics
+- IRIS-Meta-Quest3 subscribes to those topics in Unity and renders:
+  - point clouds
+  - the wrist camera panel
+  - the robot scene
+
+Current desired runtime behavior:
+- Wrist panel feed: wrist camera only
+- Workspace / debugging camera: top replaces front
+- Active point cloud cameras: top, right, left
+- Front point cloud is no longer part of the active workflow
+- Wrist camera panel should be parented to the robot hand link (with link7 fallback), using local offset/rotation
+- Viewer-facing fallback behavior should not be the production path
+
+What we changed in this chat
+========================================
+
+1. Wrist camera panel mounting was redesigned
+- Originally the panel behavior was unstable and often looked like it was floating, using scene/world placement logic.
+- We changed the panel mounting model so the active production path is robot-link based:
+  - primary anchor link: hand
+  - fallback anchor link: link7
+- The panel is now intended to be parented under the resolved robot link and positioned by local transform, not by viewer-facing fallback logic.
+
+Files involved:
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimPubRgbdSubscriber.cs
+- IRIS-Meta-Quest3/Assets/Scenes/IRISScene.unity
+
+Important code concepts added / used:
+- panelAnchorLinkName = "hand"
+- panelAnchorFallbackLinkName = "link7"
+- parentPanelUnderAnchorLink = true
+- panelLocalOffsetOnAnchor
+- panelLocalEulerOnAnchor
+
+Current working wrist panel local transform values:
+- Position: (-0.0033, 0.0145, 0.0564)
+- Rotation: (-156.377, -3.871002, 0.1029968)
+- Scale: (0.1, 0.06, 1)
+
+This means:
+- The panel should move like part of the robot hand.
+- Adjustments should now be made as local transform changes on the hand anchor, not global world-space offsets.
+
+2. Camera topology was cleaned up
+- We moved away from using the front camera as the active workspace point-cloud camera.
+- We switched to:
+  - RGBD active cameras: wrist, top, right, left
+  - Point cloud active cameras: top, right, left
+- Wrist remains the panel feed.
+- Top replaced front for workspace coverage.
+
+Files involved:
+- SimPublisher/AG/franka_quest_unified_publisher.py
+- IRIS-Meta-Quest3/Assets/Scenes/IRISScene.unity
+
+3. Point cloud visualization was cleaned up in Unity
+- The point clouds were visually too blocky.
+- We reduced point size and increased useful density defaults.
+- Unity now uses explicit point size control through the renderer/shader path.
+
+Files involved:
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimplePointCloudRenderer.cs
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimPubPointCloudSubscriber.cs
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/PointCloudPoints.shader
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/pointCloudMat.mat
+
+Key result:
+- Shader point size default was reduced from 6 to 3.
+- Unity point cloud default maxPoints was raised to 40000.
+- This made clouds look less like large square pixels.
+
+4. Edit-mode material leak warning was fixed
+- Unity was spamming warnings because renderer.material was being used during edit-time validation.
+- We changed the point-size application path to MaterialPropertyBlock.
+
+File involved:
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimplePointCloudRenderer.cs
+
+Why this mattered:
+- It stopped Unity from instantiating/leaking materials in edit mode.
+- It kept the point-size control while avoiding editor-side warnings.
+
+5. Scene cleanup was performed in IRISScene.unity
+- We cleaned the active scene wiring to reduce ambiguity.
+- We removed stale/duplicate RGB and point cloud setup paths where possible.
+- We kept one explicit wrist panel renderer target.
+- We reduced confusion around multiple camera tags and old panel objects.
+
+Important scene outcomes:
+- Top/right/left are the intended active point cloud objects
+- Front is no longer the active point cloud path
+- Wrist panel uses explicit scene wiring rather than mystery runtime-created objects
+
+6. LAB camera prism visualization was changed
+- We removed front prism debug markers from the active LAB XMLs and replaced them with top prism markers.
+- This aligns the visual debugging setup with the new active camera topology.
+
+Files involved:
+- LAB/lab1_T_stack.xml
+- LAB/lab2_boxes_cups.xml
+- LAB/lab2_boxes_cups_vizCollisionSeparated_v3_groups_named.xml
+- LAB/lab3_stick_maze_vizCollisionSeparated_v3_groups_named.xml
+
+7. Python publisher file was repaired after accidental breakage
+- A few PowerShell variable assignment lines were accidentally left uncommented inside the Python file.
+- That caused a Python syntax error.
+- We commented those back out so the script runs normally again.
+
+File involved:
+- SimPublisher/AG/franka_quest_unified_publisher.py
+
+8. Point cloud camera-specific cap support was added
+- The user wanted to reduce max points for the top point cloud without affecting left/right.
+- We added a dedicated CLI argument:
+  --pc_max_points_top
+
+Behavior:
+- top can use its own point cap
+- right and left still use the global --pc_max_points
+
+File involved:
+- SimPublisher/AG/franka_quest_unified_publisher.py
+
+Current point cloud tuning concepts
+========================================
+
+Important publisher-side arguments:
+- --w / --h
+  Controls the rendered sensor resolution before point-cloud extraction.
+
+- --pc_stride
+  Controls how densely pixels are sampled from the depth image.
+  Lower stride = denser cloud.
+  Higher stride = sparser cloud.
+
+- --pc_max_points
+  Global hard cap after filtering.
+
+- --pc_max_points_top
+  Optional top-camera-only hard cap.
+
+- --pc_min_depth / --pc_max_depth
+  Near/far filtering range for point generation.
+
+- --pc_clip_below_table
+  Removes points below the table plane.
+
+- --pc_table_clearance / --pc_top_table_clearance
+  Safety margin above the table before clipping.
+
+- --pc_object_only
+  Restricts points to a workspace AABB.
+
+- --pc_object_bbox_min / --pc_object_bbox_max
+  The world-space bounds for that object-only crop.
+
+- --pc_no_anchor_auto_translate
+  Disables anchor-based automatic translation correction.
+  This is useful when stable, predictable alignment is preferred over runtime auto-adjustment.
+
+Important Unity-side knobs:
+- SimPubPointCloudSubscriber.maxPoints
+  Unity receive-side cap
+
+- SimplePointCloudRenderer.pointSize
+  Visual size of rendered points
+
+- PointCloudPoints shader _PointSize
+  Shader-side point size
+
+Important non-obvious detail:
+- The point-cloud payload includes a point size field, but Unity currently ignores the per-point size in the subscriber path.
+- Visible point size is controlled by Unity's point renderer/shader, not by the payload's size channel.
+
+Current recommended / working command pattern
+========================================
+
+Baseline working launch pattern:
+
+.\.venv\Scripts\python.exe .\SimPublisher\AG\franka_quest_unified_publisher.py `
+  --xml "$LAB_XML" `
+  --host "$HOST_IP" `
+  --unity_node "$UNITY_NODE" `
+  --bind_ip 0.0.0.0 `
+  --visible_geoms_groups 2 `
+  --fps 30 --w 640 --h 480 `
+  --cams wrist top right left `
+  --pc --pc_cams top right left `
+  --pc_stride 4 --pc_max_points 20000 `
+  --pc_min_depth 0.08 --pc_max_depth 2.8 `
+  --pc_intrinsics_mode mujoco `
+  --pc_clip_below_table --pc_table_clearance 0.02 --pc_top_table_clearance 0.035 `
+  --pc_object_only --pc_object_bbox_min 0.35 -0.35 0.40 --pc_object_bbox_max 0.90 0.35 0.85 `
+  --cam_extrinsics_profile lab_standard `
+  --pc_no_anchor_auto_translate `
+  --robot_start_preset reverse_u `
+  --show_mujoco_window `
+  --object_control `
+  --object_step_xy 0.01 --object_step_z 0.008 --object_move_rate_hz 10
+
+If top cloud should be smaller than side clouds, use for example:
+
+.\.venv\Scripts\python.exe .\SimPublisher\AG\franka_quest_unified_publisher.py `
+  --xml "$LAB_XML" `
+  --host "$HOST_IP" `
+  --unity_node "$UNITY_NODE" `
+  --bind_ip 0.0.0.0 `
+  --visible_geoms_groups 2 `
+  --fps 30 --w 640 --h 480 `
+  --cams wrist top right left `
+  --pc --pc_cams top right left `
+  --pc_stride 4 --pc_max_points 20000 --pc_max_points_top 8000 `
+  --pc_min_depth 0.08 --pc_max_depth 2.8 `
+  --pc_intrinsics_mode mujoco `
+  --pc_clip_below_table --pc_table_clearance 0.02 --pc_top_table_clearance 0.035 `
+  --pc_object_only --pc_object_bbox_min 0.35 -0.35 0.40 --pc_object_bbox_max 0.90 0.35 0.85 `
+  --cam_extrinsics_profile lab_standard `
+  --pc_no_anchor_auto_translate `
+  --robot_start_preset reverse_u `
+  --show_mujoco_window `
+  --object_control `
+  --object_step_xy 0.01 --object_step_z 0.008 --object_move_rate_hz 10
+
+Current project status
+========================================
+
+At the end of this chat, the system was reported as "everything looks like it's working", with the request to avoid breaking that stable state.
+
+That means the working assumptions are:
+- Wrist panel is visible and placed correctly enough to use
+- Point clouds are rendering and aligned well enough
+- Top/right/left point cloud setup is functioning
+- The project is in a usable state and future changes should be incremental only
+
+Recommended operating principle going forward:
+- Do not make broad refactors while the system is working
+- Change one thing at a time
+- Prefer these isolated change categories:
+  1. panel local transform only
+  2. point-cloud density only
+  3. point size only
+  4. camera source selection only
+
+Known important files
+========================================
+
+Python / publisher:
+- SimPublisher/AG/franka_quest_unified_publisher.py
+- SimPublisher/AG/franka_quest_teleop.py
+
+Unity / Quest:
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimPubRgbdSubscriber.cs
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimPubPointCloudSubscriber.cs
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/SimplePointCloudRenderer.cs
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/PointCloudPoints.shader
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/pointCloudMat.mat
+- IRIS-Meta-Quest3/Assets/Scenes/IRISScene.unity
+- IRIS-Meta-Quest3/Assets/IRISMetaQuest3/AG/QuestPassthroughRuntimeGuard.cs
+
+MuJoCo / XML / lab setup:
+- LAB/franka_emika_panda/panda.xml
+- LAB/lab1_T_stack.xml
+- LAB/lab2_boxes_cups.xml
+- LAB/lab2_boxes_cups_vizCollisionSeparated_v3_groups_named.xml
+- LAB/lab3_stick_maze_vizCollisionSeparated_v3_groups_named.xml
+
+Prompt to continue this project in a future chat
+========================================
+
+We are working on the project "Franka-Robot-Real-to-Sim-Teleoperation-VR-Pointcloud-Simulation".
+The active runtime stack is:
+- Python publisher: SimPublisher
+- Unity Quest app: IRIS-Meta-Quest3
+
+Our end goal is a stable VR teleoperation / visualization workflow for a Franka robot simulation on Meta Quest 3, with:
+- a wrist camera panel mounted on the robot hand
+- point clouds from top/right/left cameras
+- top replacing front as the active workspace camera
+- stable scene alignment and usable Quest performance
+
+Important current state:
+- Do not reintroduce the old front-camera point cloud workflow
+- Do not make the wrist panel viewer-fixed again
+- The wrist panel should stay anchored to the robot hand (fallback link7)
+- Point cloud appearance is controlled mainly by pc_stride, pc_max_points / pc_max_points_top, Unity maxPoints, and Unity pointSize
+- The system was working at the end of the last session, so future changes should be incremental and low-risk
+
+Recent changes already made:
+- robot-mounted wrist panel anchor workflow
+- top/right/left point cloud workflow
+- front prism replaced by top prism in active LAB XMLs
+- point-size render cleanup and edit-mode warning fix
+- per-top-camera point cap support via --pc_max_points_top
+- Python syntax breakage at bottom of franka_quest_unified_publisher.py already fixed
+
+When making new changes:
+- preserve current working behavior unless the change is explicitly requested
+- prefer tiny, isolated patches
+- explain whether a requested change is:
+  - publisher-side sampling
+  - Unity-side rendering
+  - scene wiring
+  - robot panel local transform
+
+End of handoff.

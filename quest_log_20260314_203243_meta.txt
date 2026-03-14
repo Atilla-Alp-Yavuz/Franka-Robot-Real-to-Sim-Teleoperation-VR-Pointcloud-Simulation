@@ -1,0 +1,10 @@
+package=com.IntuitiveRobotsLab.IRISMetaQuest3
+started=2026-03-14T20:32:43.9021122+01:00
+apk_path=package:/data/app/~~JtY8kws22y7mPYKgyYGnRg==/com.IntuitiveRobotsLab.IRISMetaQuest3-YjrgcIIgeaazVCLAqN0cIw==/base.apk
+versionCode=1 minSdk=32 targetSdk=32
+versionName=1.4.3
+lastUpdateTime=2026-03-14 20:18:07
+firstInstallTime=2026-02-20 11:10:02
+device_model=Quest 3
+build_fingerprint=oculus/eureka/eureka:14/UP1A.231005.007.A1/51764730129200520:user/release-keys
+pid_after_launch=10864

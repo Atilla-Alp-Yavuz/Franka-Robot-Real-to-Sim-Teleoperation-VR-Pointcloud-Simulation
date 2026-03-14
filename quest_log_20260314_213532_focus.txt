@@ -1,0 +1,64 @@
+03-14 21:36:09.835 I/Unity   (10690): [GpuInstancedPointCloudRenderer] api=Vulkan supportsInstancing=True supportsComputeShaders=True material=gpuPointCloudInstanced shader=AG/PointCloud/GpuInstancedCubes xrStereo=MultiPass
+03-14 21:36:09.841 I/Unity   (10690): [GpuInstancedPointCloudRenderer] api=Vulkan supportsInstancing=True supportsComputeShaders=True material=gpuPointCloudInstanced shader=AG/PointCloud/GpuInstancedCubes xrStereo=MultiPass
+03-14 21:36:09.841 I/Unity   (10690): [GpuInstancedPointCloudRenderer] api=Vulkan supportsInstancing=True supportsComputeShaders=True material=gpuPointCloudInstanced shader=AG/PointCloud/GpuInstancedCubes xrStereo=MultiPass
+03-14 21:36:09.934 I/Unity   (10690): [GpuPointCloudSubscriber] Connected tcp://192.168.0.208:7741 topics=[SimPub/Sensors/top/pc]
+03-14 21:36:09.944 I/Unity   (10690): [SimPubRgbdSubscriber] Active panel renderer='WristCamPanel' go='WristCamPanel' idx=0 dedicated=False subscriberId=19328
+03-14 21:36:09.945 I/Unity   (10690): [SimPubRgbdSubscriber] Viewer camera resolved source='preferred-name:CenterEyeAnchor' name='CenterEyeAnchor' path='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' id=18144 active=True enabled=True
+03-14 21:36:09.948 I/Unity   (10690): [SimPubRgbdSubscriber] Connected tcp://192.168.0.208:7741
+03-14 21:36:09.948 I/Unity   (10690): [SimPubRgbdSubscriber] Runtime config subscriberId=19328 follow='wrist' forcePanel=False parentToScene=False offset=(0.00, 0.00, 0.00) offsetWorldAxes=False viewerTilt=(-66.03, 11.85, -6.22) flattenViewerFacing=True linkLift=0.055 linkOutward=0.000 calibrate=False
+03-14 21:36:09.954 I/Unity   (10690): [GpuPointCloudSubscriber] Connected tcp://192.168.0.208:7741 topics=[SimPub/Sensors/right/pc]
+03-14 21:36:09.957 I/Unity   (10690): [GpuPointCloudSubscriber] Connected tcp://192.168.0.208:7741 topics=[SimPub/Sensors/left/pc]
+03-14 21:36:09.960 I/Unity   (10690): [SimPubClient] Connected tcp://192.168.0.208:7741
+03-14 21:36:10.011 W/Unity   (10690): [QuestTrackingOriginGuard] Reapplied XR state (Start) trackingOrigin=EyeLevel->Stage allowRecenter=False->False reapplyCount=1
+03-14 21:36:10.018 I/Unity   (10690): [GpuPointCloudSubscriber] First decoded frame topic=SimPub/Sensors/top/pc actual=3814 declared=20000 representativeRaw=(0.19, 0.48, 0.37)
+03-14 21:36:10.025 I/Unity   (10690): [GpuPointCloudSubscriber] First decoded frame topic=SimPub/Sensors/right/pc actual=1719 declared=20000 representativeRaw=(-0.29, 0.48, 0.90)
+03-14 21:36:10.032 W/Unity   (10690): [QuestTrackingOriginGuard] XR loss observed (InputFocusLost) lastRecoveryAt=-Infinity
+03-14 21:36:10.050 I/Unity   (10690): [GpuPointCloudSubscriber] First decoded frame topic=SimPub/Sensors/left/pc actual=1627 declared=20000 representativeRaw=(0.35, 0.48, 0.82)
+03-14 21:36:10.052 W/Unity   (10690): [GpuPointCloudSubscriber] Waiting for scene anchor under 'MujocoScene' before rendering 'SimPub/Sensors/top/pc'.
+03-14 21:36:10.067 W/Unity   (10690): [GpuPointCloudSubscriber] Waiting for scene anchor under 'MujocoScene' before rendering 'SimPub/Sensors/right/pc'.
+03-14 21:36:10.069 W/Unity   (10690): [GpuPointCloudSubscriber] Waiting for scene anchor under 'MujocoScene' before rendering 'SimPub/Sensors/left/pc'.
+03-14 21:36:10.073 I/Unity   (10690): [QuestTrackingOriginGuard] Status: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=False settleRemaining=0.00s lastUnstableAt=0.24 lastRecoveryAt=-Infinity
+03-14 21:36:10.181 I/Unity   (10690): [SimPubRgbdSubscriber] RX SimPub/Sensors/top/rgbd bytes=1264586
+03-14 21:36:10.290 I/Unity   (10690): [QuestTrackingOriginGuard] XR recovery observed (InputFocusAcquired) stableAfter=2.16 settleWindow=1.50s
+03-14 21:36:10.291 I/Unity   (10690): [QuestTrackingOriginGuard] RuntimeEvent: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=False settleRemaining=1.50s lastUnstableAt=0.24 lastRecoveryAt=0.66
+03-14 21:36:10.329 I/Unity   (10690): [SimPubRgbdSubscriber] RX SimPub/Sensors/right/rgbd bytes=1266318
+03-14 21:36:10.463 I/Unity   (10690): [SimPubRgbdSubscriber] RX SimPub/Sensors/left/rgbd bytes=1266794
+03-14 21:36:10.575 I/Unity   (10690): [SimPubRgbdSubscriber] RX SimPub/Sensors/wrist/rgbd bytes=1237098
+03-14 21:36:10.593 I/Unity   (10690): [SimPubRgbdSubscriber] Applied RGB frame cam='wrist' tex=640x480 centerRGB=(0.30,0.20,0.15) shader='Unlit/Texture'
+03-14 21:36:10.594 W/Unity   (10690): [SimPubRgbdSubscriber] Waiting for panel anchor 'hand' (fallback 'link7'); using viewer fallback panel placement to keep the wrist panel visible.
+03-14 21:36:10.594 I/Unity   (10690): [SimPubRgbdSubscriber] Panel diagnostics: active=True enabled=True visible=False inFront=True inViewport=True vp=(0.41,0.39,0.55) panelPos=(-1.21, 0.45, 1.22) panelRot=(282.72, 79.95, 342.87) panelScale=(0.10, 0.06, 1.00) camera='CenterEyeAnchor' camPath='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' camSource='preferred-name:CenterEyeAnchor' camPos=(-0.72, 0.57, 1.53) shader='Unlit/Texture' tex=640x480 poseSource='viewer-fallback' anchor='' anchorFallback=False anchorPath='<none>' rendererId=18156
+03-14 21:36:10.696 I/Unity   (10690): [SimPubRgbdSubscriber] RX SimPub/Sensors/top/rgbd bytes=1264600
+03-14 21:36:11.092 I/Unity   (10690): [SimPubRgbdSubscriber] Applied RGB frame cam='wrist' tex=640x480 centerRGB=(0.30,0.20,0.15) shader='Unlit/Texture'
+03-14 21:36:11.685 I/Unity   (10690): [SimPubRgbdSubscriber] Applied RGB frame cam='wrist' tex=640x480 centerRGB=(0.30,0.20,0.15) shader='Unlit/Texture'
+03-14 21:36:12.237 W/Unity   (10690): SimScene with id MujocoScene does not exist.
+03-14 21:36:12.488 I/Unity   (10690): Service MujocoScene/CreateSimObject is registered
+03-14 21:36:12.489 I/Unity   (10690): Service MujocoScene/CreateVisual is registered
+03-14 21:36:12.489 I/Unity   (10690): Service MujocoScene/SubscribeRigidObjectsController is registered
+03-14 21:36:12.501 I/Unity   (10690): [GpuPointCloudSubscriber] Bound to SimScene 'MujocoScene' via anchor 'PointCloudAnchor_top'.
+03-14 21:36:12.501 I/Unity   (10690): [GpuPointCloudSubscriber] Anchor path='IRISNode/MujocoScene/PointCloudAnchor_top' localPos=(0.00, 0.00, 0.00) localRot=(0.00, 0.00, 0.00) localScale=(1.00, 1.00, 1.00)
+03-14 21:36:12.502 I/Unity   (10690): [GpuPointCloudSubscriber] Anchor worldPos=(0.00, 0.00, 0.00) worldRot=(0.00, 0.00, 0.00) worldScale=(1.00, 1.00, 1.00)
+03-14 21:36:12.502 I/Unity   (10690): [GpuPointCloudSubscriber] Render pose matrix=[[1.000,0.000,0.000,0.000],[0.000,1.000,0.000,0.000],[0.000,0.000,1.000,0.000],[0.000,0.000,0.000,1.000]]
+03-14 21:36:12.504 I/Unity   (10690): [SimPubRgbdSubscriber] Pose-follow scene root: 'MujocoScene'
+03-14 21:36:12.504 I/Unity   (10690): [MujocoSceneAutoAlign] Re-parented 'MujocoScene' under alignment frame 'TrackingSpace'.
+03-14 21:36:12.504 I/Unity   (10690): MujocoSceneAutoAlign:AlignSceneRoot(Transform, Transform)
+03-14 21:36:12.504 I/Unity   (10690): MujocoSceneAutoAlign:Update()
+03-14 21:36:12.508 I/Unity   (10690): [MujocoSceneAutoAlign] Aligned 'MujocoScene' at pos=(-1.90, -0.20, -0.99) yaw=75.8 preserveSceneHeight=True headYReasonable=True frame='TrackingSpace'
+03-14 21:36:12.508 I/Unity   (10690): MujocoSceneAutoAlign:AlignSceneRoot(Transform, Transform)
+03-14 21:36:12.508 I/Unity   (10690): MujocoSceneAutoAlign:Update()
+03-14 21:36:12.508 I/Unity   (10690): [MujocoSceneAutoAlign] Scene snapshot path='[BuildingBlock] Camera Rig/TrackingSpace/MujocoScene' localPos=(-1.90, -0.20, -0.99) localRot=(0.00, 75.81, 0.00) localScale=(1.00, 1.00, 1.00) worldPos=(-1.88, -25.71, 1.24) worldRot=(0.00, 75.81, 0.00) worldScale=(1.00, 1.00, 1.00) pointCloudAnchorResolved=True rgbPanelAnchorResolved=False
+03-14 21:36:12.508 I/Unity   (10690): MujocoSceneAutoAlign:LogSceneSnapshot(Transform)
+03-14 21:36:12.508 I/Unity   (10690): MujocoSceneAutoAlign:Update()
+03-14 21:36:12.509 I/Unity   (10690): [GpuPointCloudSubscriber] Bound to SimScene 'MujocoScene' via anchor 'PointCloudAnchor_right'.
+03-14 21:36:12.509 I/Unity   (10690): [GpuPointCloudSubscriber] Anchor path='[BuildingBlock] Camera Rig/TrackingSpace/MujocoScene/PointCloudAnchor_right' localPos=(0.00, 0.00, 0.00) localRot=(0.00, 0.00, 0.00) localScale=(1.00, 1.00, 1.00)
+03-14 21:36:12.509 I/Unity   (10690): [GpuPointCloudSubscriber] Anchor worldPos=(-1.88, -25.71, 1.24) worldRot=(0.00, 75.81, 0.00) worldScale=(1.00, 1.00, 1.00)
+03-14 21:36:12.510 I/Unity   (10690): [GpuPointCloudSubscriber] Render pose matrix=[[0.245,0.000,0.970,-1.884],[0.000,1.000,0.000,-25.708],[-0.970,0.000,0.245,1.238],[0.000,0.000,0.000,1.000]]
+03-14 21:36:12.510 I/Unity   (10690): [GpuPointCloudSubscriber] Bound to SimScene 'MujocoScene' via anchor 'PointCloudAnchor_left'.
+03-14 21:36:12.510 I/Unity   (10690): [GpuPointCloudSubscriber] Anchor path='[BuildingBlock] Camera Rig/TrackingSpace/MujocoScene/PointCloudAnchor_left' localPos=(0.00, 0.00, 0.00) localRot=(0.00, 0.00, 0.00) localScale=(1.00, 1.00, 1.00)
+03-14 21:36:12.510 I/Unity   (10690): [GpuPointCloudSubscriber] Anchor worldPos=(-1.88, -25.71, 1.24) worldRot=(0.00, 75.81, 0.00) worldScale=(1.00, 1.00, 1.00)
+03-14 21:36:12.510 I/Unity   (10690): [GpuPointCloudSubscriber] Render pose matrix=[[0.245,0.000,0.970,-1.884],[0.000,1.000,0.000,-25.708],[-0.970,0.000,0.245,1.238],[0.000,0.000,0.000,1.000]]
+03-14 21:36:12.517 I/Unity   (10690): [GpuInstancedPointCloudRenderer] Allocated GPU buffers capacity=20000 on 'toppc'.
+03-14 21:36:12.517 I/Unity   (10690): [GpuPointCloudSubscriber] First frame diagnostics topic=SimPub/Sensors/top/pc actual=3813 declared=20000 representativeRaw=(0.19, 0.48, 0.37) representativeRendered=(0.19, 0.48, 0.37) anchorPath='[BuildingBlock] Camera Rig/TrackingSpace/MujocoScene/PointCloudAnchor_top' anchorLocalPos=(0.00, 0.00, 0.00) anchorLocalRot=(0.00, 0.00, 0.00) anchorLocalScale=(1.00, 1.00, 1.00) anchorWorldPos=(-1.88, -26.03, 1.24) anchorWorldRot=(0.00, 75.81, 0.00) anchorWorldScale=(1.00, 1.00, 1.00) rendererState=ready rendererBoundsCenter=(-1.88, -26.03, 1.24) rendererBoundsSize=(1000.00, 1000.00, 1000.00) renderPoseMatrix=[[0.245,0.000,0.970,-1.884],[0.000,1.000,0.000,-26.028],[-0.970,0.000,0.245,1.238],[0.000,0.000,0.000,1.000]] blockReason=''
+03-14 21:36:12.522 I/Unity   (10690): [GpuInstancedPointCloudRenderer] Allocated GPU buffers capacity=20000 on 'rightpc'.
+03-14 21:36:12.522 I/Unity   (10690): [GpuPointCloudSubscriber] First frame diagnostics topic=SimPub/Sensors/right/pc actual=1720 declared=20000 representativeRaw=(-0.29, 0.48, 0.90) representativeRendered=(-0.29, 0.48, 0.90) anchorPath='[BuildingBlock] Camera Rig/TrackingSpace/MujocoScene/PointCloudAnchor_right' anchorLocalPos=(0.00, 0.00, 0.00) anchorLocalRot=(0.00, 0.00, 0.00) anchorLocalScale=(1.00, 1.00, 1.00) anchorWorldPos=(-1.88, -26.03, 1.24) anchorWorldRot=(0.00, 75.81, 0.00) anchorWorldScale=(1.00, 1.00, 1.00) rendererState=ready rendererBoundsCenter=(-1.88, -26.03, 1.24) rendererBoundsSize=(1000.00, 1000.00, 1000.00) renderPoseMatrix=[[0.245,0.000,0.970,-1.884],[0.000,1.000,0.000,-26.028],[-0.970,0.000,0.245,1.238],[0.000,0.000,0.000,1.000]] blockReason=''
+03-14 21:36:12.523 I/Unity   (10690): [GpuInstancedPointCloudRenderer] Allocated GPU buffers capacity=20000 on 'leftpc'.
+03-14 21:36:12.523 I/Unity   (10690): [GpuPointCloudSubscriber] First frame diagnostics topic=SimPub/Sensors/left/pc actual=1627 declared=20000 representativeRaw=(0.35, 0.48, 0.82) representativeRendered=(0.35, 0.48, 0.82) anchorPath='[BuildingBlock] Camera Rig/TrackingSpace/MujocoScene/PointCloudAnchor_left' anchorLocalPos=(0.00, 0.00, 0.00) anchorLocalRot=(0.00, 0.00, 0.00) anchorLocalScale=(1.00, 1.00, 1.00) anchorWorldPos=(-1.88, -26.03, 1.24) anchorWorldRot=(0.00, 75.81, 0.00) anchorWorldScale=(1.00, 1.00, 1.00) rendererState=ready rendererBoundsCenter=(-1.88, -26.03, 1.24) rendererBoundsSize=(1000.00, 1000.00, 1000.00) renderPoseMatrix=[[0.245,0.000,0.970,-1.884],[0.000,1.000,0.000,-26.028],[-0.970,0.000,0.245,1.238],[0.000,0.000,0.000,1.000]] blockReason=''

@@ -1,0 +1,170 @@
+03-14 21:19:33.661 W/Unity   ( 6588): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 17.90m) stableAfter=112.98 lastRecoveryAt=4.93
+03-14 21:19:33.674 W/Unity   ( 6588): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 12.25m) stableAfter=112.99 lastRecoveryAt=4.93
+03-14 21:19:33.689 W/Unity   ( 6588): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 14.57m) stableAfter=113.01 lastRecoveryAt=4.93
+03-14 21:19:36.671 I/Unity   ( 7688): [GpuInstancedPointCloudRenderer] api=Vulkan supportsInstancing=True supportsComputeShaders=True material=gpuPointCloudInstanced shader=AG/PointCloud/GpuInstancedCubes xrStereo=MultiPass
+03-14 21:19:36.677 I/Unity   ( 7688): [GpuInstancedPointCloudRenderer] api=Vulkan supportsInstancing=True supportsComputeShaders=True material=gpuPointCloudInstanced shader=AG/PointCloud/GpuInstancedCubes xrStereo=MultiPass
+03-14 21:19:36.677 I/Unity   ( 7688): [GpuInstancedPointCloudRenderer] api=Vulkan supportsInstancing=True supportsComputeShaders=True material=gpuPointCloudInstanced shader=AG/PointCloud/GpuInstancedCubes xrStereo=MultiPass
+03-14 21:19:36.770 I/Unity   ( 7688): [GpuPointCloudSubscriber] Connected tcp://192.168.0.208:7741 topics=[SimPub/Sensors/top/pc]
+03-14 21:19:36.780 I/Unity   ( 7688): [SimPubRgbdSubscriber] Active panel renderer='WristCamPanel' go='WristCamPanel' idx=0 dedicated=False subscriberId=19328
+03-14 21:19:36.780 I/Unity   ( 7688): [SimPubRgbdSubscriber] Viewer camera resolved source='preferred-name:CenterEyeAnchor' name='CenterEyeAnchor' path='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' id=18144 active=True enabled=True
+03-14 21:19:36.783 I/Unity   ( 7688): [SimPubRgbdSubscriber] Connected tcp://192.168.0.208:7741
+03-14 21:19:36.783 I/Unity   ( 7688): [SimPubRgbdSubscriber] Runtime config subscriberId=19328 follow='wrist' forcePanel=False parentToScene=False offset=(0.00, 0.00, 0.00) offsetWorldAxes=False viewerTilt=(-66.03, 11.85, -6.22) flattenViewerFacing=True linkLift=0.055 linkOutward=0.000 calibrate=False
+03-14 21:19:36.788 I/Unity   ( 7688): [GpuPointCloudSubscriber] Connected tcp://192.168.0.208:7741 topics=[SimPub/Sensors/right/pc]
+03-14 21:19:36.791 I/Unity   ( 7688): [GpuPointCloudSubscriber] Connected tcp://192.168.0.208:7741 topics=[SimPub/Sensors/left/pc]
+03-14 21:19:36.796 I/Unity   ( 7688): [SimPubClient] Connected tcp://192.168.0.208:7741
+03-14 21:19:36.822 I/Unity   ( 7688): [GpuPointCloudSubscriber] First decoded frame topic=SimPub/Sensors/top/pc actual=3784 declared=20000 representativeRaw=(0.19, 0.48, 0.37)
+03-14 21:19:36.825 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (Start) stableAfter=1.50 lastRecoveryAt=-Infinity
+03-14 21:19:36.829 W/Unity   ( 7688): [QuestTrackingOriginGuard] Reapplied XR state (Start) trackingOrigin=EyeLevel->Stage allowRecenter=False->False reapplyCount=1
+03-14 21:19:36.830 I/Unity   ( 7688): [GpuPointCloudSubscriber] First decoded frame topic=SimPub/Sensors/right/pc actual=1721 declared=20000 representativeRaw=(-0.29, 0.48, 0.90)
+03-14 21:19:36.841 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (RuntimeRecovered) stableAfter=1.74 lastRecoveryAt=0.24
+03-14 21:19:36.841 I/Unity   ( 7688): [QuestTrackingOriginGuard] RuntimeEvent: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=False settleRemaining=1.50s lastUnstableAt=0.24 lastRecoveryAt=0.24
+03-14 21:19:36.842 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (RuntimeRecovered) stableAfter=1.74 lastRecoveryAt=0.24
+03-14 21:19:36.842 I/Unity   ( 7688): [QuestTrackingOriginGuard] RuntimeEvent: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=False settleRemaining=1.50s lastUnstableAt=0.24 lastRecoveryAt=0.24
+03-14 21:19:36.843 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (RuntimeLost) stableAfter=1.74 lastRecoveryAt=0.24
+03-14 21:19:36.845 I/Unity   ( 7688): [GpuPointCloudSubscriber] First decoded frame topic=SimPub/Sensors/left/pc actual=1627 declared=20000 representativeRaw=(0.35, 0.48, 0.82)
+03-14 21:19:36.858 W/Unity   ( 7688): [GpuPointCloudSubscriber] Waiting for scene anchor under 'MujocoScene' before rendering 'SimPub/Sensors/top/pc'.
+03-14 21:19:36.914 W/Unity   ( 7688): [GpuPointCloudSubscriber] Waiting for scene anchor under 'MujocoScene' before rendering 'SimPub/Sensors/right/pc'.
+03-14 21:19:36.915 W/Unity   ( 7688): [GpuPointCloudSubscriber] Waiting for scene anchor under 'MujocoScene' before rendering 'SimPub/Sensors/left/pc'.
+03-14 21:19:36.920 I/Unity   ( 7688): [QuestTrackingOriginGuard] Status: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=False settleRemaining=1.50s lastUnstableAt=0.24 lastRecoveryAt=0.24
+03-14 21:19:36.996 I/Unity   ( 7688): [SimPubRgbdSubscriber] RX SimPub/Sensors/top/rgbd bytes=1265065
+03-14 21:19:37.123 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.28m) stableAfter=2.15 lastRecoveryAt=0.24
+03-14 21:19:37.138 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (RuntimeRecovered) stableAfter=2.17 lastRecoveryAt=0.67
+03-14 21:19:37.139 I/Unity   ( 7688): [QuestTrackingOriginGuard] RuntimeEvent: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=False settleRemaining=1.50s lastUnstableAt=0.67 lastRecoveryAt=0.67
+03-14 21:19:37.218 I/Unity   ( 7688): [SimPubRgbdSubscriber] RX SimPub/Sensors/right/rgbd bytes=1266371
+03-14 21:19:37.443 I/Unity   ( 7688): [SimPubRgbdSubscriber] RX SimPub/Sensors/left/rgbd bytes=1266762
+03-14 21:19:37.672 I/Unity   ( 7688): [SimPubRgbdSubscriber] RX SimPub/Sensors/wrist/rgbd bytes=1240339
+03-14 21:19:37.677 I/Unity   ( 7688): [SimPubRgbdSubscriber] Applied RGB frame cam='wrist' tex=640x480 centerRGB=(0.30,0.20,0.15) shader='Unlit/Texture'
+03-14 21:19:37.678 I/Unity   ( 7688): [SimPubRgbdSubscriber] Panel diagnostics: active=False enabled=True visible=False inFront=False inViewport=False vp=(1.88,-0.34,-0.32) panelPos=(0.00, 0.00, 0.00) panelRot=(0.00, 0.00, 0.00) panelScale=(0.10, 0.06, 1.00) camera='CenterEyeAnchor' camPath='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' camSource='preferred-name:CenterEyeAnchor' camPos=(-0.72, -0.54, 1.53) shader='Unlit/Texture' tex=640x480 poseSource='startup' anchor='' anchorFallback=False anchorPath='<none>' rendererId=18156
+03-14 21:19:37.883 I/Unity   ( 7688): [SimPubRgbdSubscriber] RX SimPub/Sensors/top/rgbd bytes=1265068
+03-14 21:19:38.506 I/Unity   ( 7688): [SimPubRgbdSubscriber] Applied RGB frame cam='wrist' tex=640x480 centerRGB=(0.30,0.20,0.15) shader='Unlit/Texture'
+03-14 21:19:38.641 W/Unity   ( 7688): [SimPubRgbdSubscriber] Waiting for panel anchor 'hand' (fallback 'link7'); using viewer fallback panel placement to keep the wrist panel visible.
+03-14 21:19:39.352 I/Unity   ( 7688): [SimPubRgbdSubscriber] Applied RGB frame cam='wrist' tex=640x480 centerRGB=(0.30,0.20,0.15) shader='Unlit/Texture'
+03-14 21:19:39.686 I/Unity   ( 7688): [SimPubRgbdSubscriber] Panel diagnostics: active=True enabled=True visible=False inFront=True inViewport=True vp=(0.41,0.39,0.55) panelPos=(-1.21, -32.65, 1.22) panelRot=(282.72, 79.95, 342.87) panelScale=(0.10, 0.06, 1.00) camera='CenterEyeAnchor' camPath='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' camSource='preferred-name:CenterEyeAnchor' camPos=(-0.72, -32.53, 1.53) shader='Unlit/Texture' tex=640x480 poseSource='viewer-fallback-anchor-missing' anchor='' anchorFallback=False anchorPath='<none>' rendererId=18156
+03-14 21:19:41.683 I/Unity   ( 7688): [SimPubRgbdSubscriber] Panel diagnostics: active=True enabled=True visible=False inFront=True inViewport=True vp=(0.41,0.39,0.55) panelPos=(-1.21, -103.82, 1.22) panelRot=(282.72, 79.95, 342.87) panelScale=(0.10, 0.06, 1.00) camera='CenterEyeAnchor' camPath='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' camSource='preferred-name:CenterEyeAnchor' camPos=(-0.72, -103.70, 1.53) shader='Unlit/Texture' tex=640x480 poseSource='viewer-fallback-anchor-missing' anchor='' anchorFallback=False anchorPath='<none>' rendererId=18156
+03-14 21:19:41.717 I/Unity   ( 7688): [QuestTrackingOriginGuard] Status: trackingOrigin=Stage allowRecenter=False desiredTrackingOrigin=Stage desiredAllowRecenter=False reapplyCount=1 runtimeStable=True settleRemaining=0.00s lastUnstableAt=0.67 lastRecoveryAt=0.67
+03-14 21:19:42.934 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.58m) stableAfter=7.96 lastRecoveryAt=0.67
+03-14 21:19:42.947 W/Unity   ( 7688): [SimPubRgbdSubscriber] Runtime unstable; holding the last valid wrist panel pose.
+03-14 21:19:43.351 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.01m) stableAfter=8.38 lastRecoveryAt=0.67
+03-14 21:19:43.573 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=8.60 lastRecoveryAt=0.67
+03-14 21:19:43.632 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.16m) stableAfter=8.66 lastRecoveryAt=0.67
+03-14 21:19:43.689 I/Unity   ( 7688): [SimPubRgbdSubscriber] Panel diagnostics: active=True enabled=True visible=False inFront=True inViewport=False vp=(0.41,42.18,0.55) panelPos=(-1.21, -168.26, 1.22) panelRot=(282.72, 79.95, 342.87) panelScale=(0.10, 0.06, 1.00) camera='CenterEyeAnchor' camPath='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' camSource='preferred-name:CenterEyeAnchor' camPos=(-0.72, -214.11, 1.53) shader='Unlit/Texture' tex=640x480 poseSource='stability-hold' anchor='' anchorFallback=False anchorPath='<none>' rendererId=18156
+03-14 21:19:43.712 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.15m) stableAfter=8.74 lastRecoveryAt=0.67
+03-14 21:19:43.768 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.06m) stableAfter=8.80 lastRecoveryAt=0.67
+03-14 21:19:43.781 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.71m) stableAfter=8.81 lastRecoveryAt=0.67
+03-14 21:19:43.837 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.31m) stableAfter=8.86 lastRecoveryAt=0.67
+03-14 21:19:43.849 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.38m) stableAfter=8.88 lastRecoveryAt=0.67
+03-14 21:19:43.892 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.19m) stableAfter=8.92 lastRecoveryAt=0.67
+03-14 21:19:43.989 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=9.02 lastRecoveryAt=0.67
+03-14 21:19:44.044 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.24m) stableAfter=9.07 lastRecoveryAt=0.67
+03-14 21:19:44.104 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.00m) stableAfter=9.13 lastRecoveryAt=0.67
+03-14 21:19:44.115 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.17m) stableAfter=9.14 lastRecoveryAt=0.67
+03-14 21:19:44.159 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=9.18 lastRecoveryAt=0.67
+03-14 21:19:44.197 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.15m) stableAfter=9.23 lastRecoveryAt=0.67
+03-14 21:19:44.242 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.27 lastRecoveryAt=0.67
+03-14 21:19:44.253 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=9.28 lastRecoveryAt=0.67
+03-14 21:19:44.281 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.11m) stableAfter=9.31 lastRecoveryAt=0.67
+03-14 21:19:44.311 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.34 lastRecoveryAt=0.67
+03-14 21:19:44.337 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.13m) stableAfter=9.36 lastRecoveryAt=0.67
+03-14 21:19:44.380 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.41 lastRecoveryAt=0.67
+03-14 21:19:44.393 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.01m) stableAfter=9.42 lastRecoveryAt=0.67
+03-14 21:19:44.408 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.00m) stableAfter=9.44 lastRecoveryAt=0.67
+03-14 21:19:44.420 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.10m) stableAfter=9.45 lastRecoveryAt=0.67
+03-14 21:19:44.447 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.05m) stableAfter=9.48 lastRecoveryAt=0.67
+03-14 21:19:44.475 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.50 lastRecoveryAt=0.67
+03-14 21:19:44.489 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.01m) stableAfter=9.52 lastRecoveryAt=0.67
+03-14 21:19:44.506 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.53 lastRecoveryAt=0.67
+03-14 21:19:44.519 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.19m) stableAfter=9.54 lastRecoveryAt=0.67
+03-14 21:19:44.548 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.04m) stableAfter=9.57 lastRecoveryAt=0.67
+03-14 21:19:44.562 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.02m) stableAfter=9.59 lastRecoveryAt=0.67
+03-14 21:19:44.575 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.26m) stableAfter=9.60 lastRecoveryAt=0.67
+03-14 21:19:44.602 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.63 lastRecoveryAt=0.67
+03-14 21:19:44.614 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.00m) stableAfter=9.64 lastRecoveryAt=0.67
+03-14 21:19:44.635 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.05m) stableAfter=9.66 lastRecoveryAt=0.67
+03-14 21:19:44.642 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.27m) stableAfter=9.67 lastRecoveryAt=0.67
+03-14 21:19:44.669 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.04m) stableAfter=9.70 lastRecoveryAt=0.67
+03-14 21:19:44.686 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.04m) stableAfter=9.71 lastRecoveryAt=0.67
+03-14 21:19:44.700 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.03m) stableAfter=9.73 lastRecoveryAt=0.67
+03-14 21:19:44.712 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.10m) stableAfter=9.74 lastRecoveryAt=0.67
+03-14 21:19:44.740 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.29m) stableAfter=9.77 lastRecoveryAt=0.67
+03-14 21:19:44.767 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.05m) stableAfter=9.79 lastRecoveryAt=0.67
+03-14 21:19:44.783 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.06m) stableAfter=9.81 lastRecoveryAt=0.67
+03-14 21:19:44.795 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.20m) stableAfter=9.82 lastRecoveryAt=0.67
+03-14 21:19:44.831 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.05m) stableAfter=9.86 lastRecoveryAt=0.67
+03-14 21:19:44.840 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.47m) stableAfter=9.86 lastRecoveryAt=0.67
+03-14 21:19:44.864 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.21m) stableAfter=9.89 lastRecoveryAt=0.67
+03-14 21:19:44.894 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.08m) stableAfter=9.92 lastRecoveryAt=0.67
+03-14 21:19:44.906 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=9.93 lastRecoveryAt=0.67
+03-14 21:19:44.920 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.08m) stableAfter=9.95 lastRecoveryAt=0.67
+03-14 21:19:44.934 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=9.96 lastRecoveryAt=0.67
+03-14 21:19:44.948 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=9.98 lastRecoveryAt=0.67
+03-14 21:19:44.961 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.06m) stableAfter=9.99 lastRecoveryAt=0.67
+03-14 21:19:44.977 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.09m) stableAfter=10.00 lastRecoveryAt=0.67
+03-14 21:19:44.989 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.17m) stableAfter=10.02 lastRecoveryAt=0.67
+03-14 21:19:45.016 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.49m) stableAfter=10.04 lastRecoveryAt=0.67
+03-14 21:19:45.043 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.44m) stableAfter=10.07 lastRecoveryAt=0.67
+03-14 21:19:45.073 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.09m) stableAfter=10.10 lastRecoveryAt=0.67
+03-14 21:19:45.085 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.24m) stableAfter=10.11 lastRecoveryAt=0.67
+03-14 21:19:45.113 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.11m) stableAfter=10.14 lastRecoveryAt=0.67
+03-14 21:19:45.128 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.10m) stableAfter=10.16 lastRecoveryAt=0.67
+03-14 21:19:45.145 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.11m) stableAfter=10.17 lastRecoveryAt=0.67
+03-14 21:19:45.155 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.43m) stableAfter=10.18 lastRecoveryAt=0.67
+03-14 21:19:45.182 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.23m) stableAfter=10.21 lastRecoveryAt=0.67
+03-14 21:19:45.213 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.12m) stableAfter=10.24 lastRecoveryAt=0.67
+03-14 21:19:45.225 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.28m) stableAfter=10.25 lastRecoveryAt=0.67
+03-14 21:19:45.239 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.00m) stableAfter=10.27 lastRecoveryAt=0.67
+03-14 21:19:45.257 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.08m) stableAfter=10.28 lastRecoveryAt=0.67
+03-14 21:19:45.268 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.12m) stableAfter=10.30 lastRecoveryAt=0.67
+03-14 21:19:45.282 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.26m) stableAfter=10.31 lastRecoveryAt=0.67
+03-14 21:19:45.310 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.13m) stableAfter=10.34 lastRecoveryAt=0.67
+03-14 21:19:45.326 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.12m) stableAfter=10.35 lastRecoveryAt=0.67
+03-14 21:19:45.338 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.13m) stableAfter=10.37 lastRecoveryAt=0.67
+03-14 21:19:45.351 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.26m) stableAfter=10.38 lastRecoveryAt=0.67
+03-14 21:19:45.365 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.04m) stableAfter=10.39 lastRecoveryAt=0.67
+03-14 21:19:45.377 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.14m) stableAfter=10.41 lastRecoveryAt=0.67
+03-14 21:19:45.394 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.07m) stableAfter=10.42 lastRecoveryAt=0.67
+03-14 21:19:45.406 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.37m) stableAfter=10.43 lastRecoveryAt=0.67
+03-14 21:19:45.433 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.14m) stableAfter=10.46 lastRecoveryAt=0.67
+03-14 21:19:45.452 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.12m) stableAfter=10.47 lastRecoveryAt=0.67
+03-14 21:19:45.462 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.11m) stableAfter=10.49 lastRecoveryAt=0.67
+03-14 21:19:45.480 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.20m) stableAfter=10.50 lastRecoveryAt=0.67
+03-14 21:19:45.488 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.12m) stableAfter=10.52 lastRecoveryAt=0.67
+03-14 21:19:45.508 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.12m) stableAfter=10.53 lastRecoveryAt=0.67
+03-14 21:19:45.518 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.17m) stableAfter=10.55 lastRecoveryAt=0.67
+03-14 21:19:45.531 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.21m) stableAfter=10.56 lastRecoveryAt=0.67
+03-14 21:19:45.545 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.08m) stableAfter=10.57 lastRecoveryAt=0.67
+03-14 21:19:45.559 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.15m) stableAfter=10.59 lastRecoveryAt=0.67
+03-14 21:19:45.574 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.23m) stableAfter=10.60 lastRecoveryAt=0.67
+03-14 21:19:45.586 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.29m) stableAfter=10.61 lastRecoveryAt=0.67
+03-14 21:19:45.615 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.19m) stableAfter=10.64 lastRecoveryAt=0.67
+03-14 21:19:45.629 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.16m) stableAfter=10.66 lastRecoveryAt=0.67
+03-14 21:19:45.642 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.16m) stableAfter=10.67 lastRecoveryAt=0.67
+03-14 21:19:45.658 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.18m) stableAfter=10.68 lastRecoveryAt=0.67
+03-14 21:19:45.670 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.17m) stableAfter=10.70 lastRecoveryAt=0.67
+03-14 21:19:45.690 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.22m) stableAfter=10.71 lastRecoveryAt=0.67
+03-14 21:19:45.699 I/Unity   ( 7688): [SimPubRgbdSubscriber] Panel diagnostics: active=True enabled=True visible=False inFront=True inViewport=False vp=(0.41,179.28,0.55) panelPos=(-1.21, -168.26, 1.22) panelRot=(282.72, 79.95, 342.87) panelScale=(0.10, 0.06, 1.00) camera='CenterEyeAnchor' camPath='[BuildingBlock] Camera Rig/TrackingSpace/CenterEyeAnchor' camSource='preferred-name:CenterEyeAnchor' camPos=(-0.72, -364.91, 1.53) shader='Unlit/Texture' tex=640x480 poseSource='stability-hold' anchor='' anchorFallback=False anchorPath='<none>' rendererId=18156
+03-14 21:19:45.700 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.14m) stableAfter=10.72 lastRecoveryAt=0.67
+03-14 21:19:45.712 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.15m) stableAfter=10.74 lastRecoveryAt=0.67
+03-14 21:19:45.727 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.18m) stableAfter=10.75 lastRecoveryAt=0.67
+03-14 21:19:45.739 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.22m) stableAfter=10.77 lastRecoveryAt=0.67
+03-14 21:19:45.753 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.16m) stableAfter=10.78 lastRecoveryAt=0.67
+03-14 21:19:45.776 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.21m) stableAfter=10.80 lastRecoveryAt=0.67
+03-14 21:19:45.780 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.32m) stableAfter=10.81 lastRecoveryAt=0.67
+03-14 21:19:45.794 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.02m) stableAfter=10.82 lastRecoveryAt=0.67
+03-14 21:19:45.808 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.22m) stableAfter=10.84 lastRecoveryAt=0.67
+03-14 21:19:45.822 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.17m) stableAfter=10.85 lastRecoveryAt=0.67
+03-14 21:19:45.836 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.21m) stableAfter=10.86 lastRecoveryAt=0.67
+03-14 21:19:45.850 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.18m) stableAfter=10.88 lastRecoveryAt=0.67
+03-14 21:19:45.866 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.20m) stableAfter=10.89 lastRecoveryAt=0.67
+03-14 21:19:45.878 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.42m) stableAfter=10.91 lastRecoveryAt=0.67
+03-14 21:19:45.895 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.02m) stableAfter=10.92 lastRecoveryAt=0.67
+03-14 21:19:45.906 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.22m) stableAfter=10.93 lastRecoveryAt=0.67
+03-14 21:19:45.920 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.20m) stableAfter=10.95 lastRecoveryAt=0.67
+03-14 21:19:45.933 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.25m) stableAfter=10.96 lastRecoveryAt=0.67
+03-14 21:19:45.953 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.14m) stableAfter=10.98 lastRecoveryAt=0.67
+03-14 21:19:45.960 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.65m) stableAfter=10.99 lastRecoveryAt=0.67
+03-14 21:19:45.989 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.21m) stableAfter=11.02 lastRecoveryAt=0.67
+03-14 21:19:46.006 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.24m) stableAfter=11.03 lastRecoveryAt=0.67
+03-14 21:19:46.018 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.21m) stableAfter=11.05 lastRecoveryAt=0.67
+03-14 21:19:46.030 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.41m) stableAfter=11.06 lastRecoveryAt=0.67
+03-14 21:19:46.044 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.06m) stableAfter=11.07 lastRecoveryAt=0.67
+03-14 21:19:46.063 W/Unity   ( 7688): [QuestTrackingOriginGuard] Marked runtime unstable (HeadPoseJump 1.24m) stableAfter=11.09 lastRecoveryAt=0.67
